@@ -1,5 +1,7 @@
 <h1>Key-Value Storage</h1>
-This project implements a multi-threaded TCP server in Python that provides a persistent key-value store with a custom command protocol. It supports multiple concurrent clients, ensures thread-safe operations using reentrant locks, and persists data to disk.
+This project implements a multi-threaded TCP server in Python that provides a persistent key-value store with a custom command protocol.
+
+It supports multiple concurrent clients, ensures thread-safe operations using reentrant locks, and persists data to disk.
 
 <H1>Functionalities</H1>
 
