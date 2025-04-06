@@ -40,8 +40,8 @@ It supports multiple concurrent clients, ensures thread-safe operations using re
 
 - Open your terminal and run:
   ```
-  git clone https://github.com/yourusername/your-repo-name.git
-  cd your-repo-name
+  git clone https://github.com/BrianKYildirim/key-value-storage.git
+  cd key-value-storage
   ```
 
 <h3>Running the application</h3>
