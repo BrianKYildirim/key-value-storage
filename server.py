@@ -88,11 +88,8 @@ class KeyValueStore:  # Manages an in-memory dictionary for key–value pairs an
 
     def set(self, key, value):
         with self.lock:  # Ensures that updating the store and saving to disk are atomic operations.
-            print(f"[DEBUG] Setting key '{key}' to value '{value}'", flush=True)
             self.store[key] = value
-            print("[DEBUG] Calling save()", flush=True)
             self.save()
-            print("[DEBUG] Finished save()", flush=True)
         return f"Added key '{key}' with value '{value}'\n"  # Confirms that the key has been added.
 
     def get(self, key):  # Retrieve the value for the specified key.

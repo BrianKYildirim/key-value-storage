@@ -59,7 +59,6 @@ class Client:
         try:
             while True:  # Prompts the user for a command, sends it to the server, and then waits for a response.
                 message = input("Enter command (or 'quit' to exit): ")
-                print(f"Sending: {message}", flush=True)
                 self.send(message)
                 if message.lower() == "quit":
                     print("Exiting client.", flush=True)
@@ -67,7 +66,6 @@ class Client:
                     # If the command is “quit” (or if the server disconnects), it
                     # breaks out of the loop and then closes the socket.
 
-                print("Waiting for response...", flush=True)
                 response = self.receive()
                 if response is None:
                     print("Server disconnected.", flush=True)
