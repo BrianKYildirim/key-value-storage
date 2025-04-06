@@ -65,7 +65,7 @@ class Client:
                     print("Exiting client.", flush=True)
                     break
                     # If the command is “quit” (or if the server disconnects), it
-                    # breaks out of the loop and closes the socket.
+                    # breaks out of the loop and then closes the socket.
 
                 print("Waiting for response...", flush=True)
                 response = self.receive()
