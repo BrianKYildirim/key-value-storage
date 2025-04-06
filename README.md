@@ -32,6 +32,9 @@ It supports multiple concurrent clients, ensures thread-safe operations using re
 
 
 <h1>User Guide</h1>
+
+https://github.com/user-attachments/assets/721b5ab5-2df6-498e-96f0-17ff72d300ff
+
 <h3>Prerequisites</h3>
 - Python 3.x is required. The project uses only Python’s standard libraries (no additional dependencies).
 
