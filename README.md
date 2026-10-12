@@ -1,157 +1,305 @@
-<h1>Key-Value Storage</h1>
-This project implements a multi-threaded TCP server in Python that provides a persistent key-value store with a custom command protocol.
+# Multithreaded TCP Key-Value Storage Server
 
-It supports multiple concurrent clients, ensures thread-safe operations using reentrant locks, and persists data to disk.
+A lightweight key-value storage service written in Python using TCP sockets and the standard library.
 
-<H1>Functionalities</H1>
+The server accepts multiple client connections concurrently, processes commands through a simple text-based protocol, and persists stored data to disk so it survives server restarts.
 
-- Persistent Storage:
-  - Key-value pairs are saved to a file (store.txt) so that data remains available even after the server restarts.
+## Demo
 
-- Multi-threaded Client Handling:
-  - Each client connection is handled in its own thread, allowing the server to manage multiple connections concurrently.
-
-- Thread-safe Operations:
-  - Uses threading.RLock to ensure safe access to the shared key-value store, even when nested operations occur.
-
-- Custom Command Protocol:
-  - Supports the following commands:
-
-    - `SET <key> <value>`: Adds or updates a key-value pair.
-
-    - `GET <key>`: Retrieves the value for a specified key.
-
-    - `REMOVE <key>`: Deletes the key-value pair.
-
-    - `PRINT`: Displays all key-value pairs.
-
-    - `quit`: Disconnects the client gracefully.
-
-- Error Handling and Shutdown:
-  - The server includes robust error handling and allows for a clean shutdown when clients disconnect or when the server is interrupted.
-
-
-<h1>User Guide</h1>
+The video below demonstrates how to start the server, connect with a client, and use the supported commands.
 
 https://github.com/user-attachments/assets/721b5ab5-2df6-498e-96f0-17ff72d300ff
 
-<h3>Prerequisites</h3>
-- Python 3.x is required. The project uses only Python’s standard libraries (no additional dependencies).
+## Features
 
-<h3>Setup</h3>
-- Clone the Repository:
+- TCP client-server communication using Python sockets
+- A dedicated thread for each connected client
+- Thread-safe access to the shared key-value store
+- Persistent storage using a local `store.txt` file
+- Custom command-line protocol
+- Graceful client disconnects and server shutdown
+- No third-party dependencies
+- Compatible with Python 3
 
-- Open your terminal and run:
-  ```
-  git clone https://github.com/BrianKYildirim/key-value-storage.git
-  cd key-value-storage
-  ```
+## How It Works
 
-<h3>Running the application</h3>
+The project contains two main components:
 
-1. Open a terminal in the project directory.
+### Server
 
-2. Run the server.
-   ```
-   python server.py
-   ```
+`server.py`:
 
-3. The server will start listening on port 3490 and display:
-   ```
-   Server listening on 0.0.0.0:3490
-   ```
+- Creates and binds a TCP socket on port `3490`
+- Listens for incoming client connections
+- Starts a daemon thread for each client
+- Parses and executes client commands
+- Stores key-value pairs in memory
+- Persists updates to `store.txt`
+- Uses a reentrant lock to protect shared state
 
-4. Open another terminal in the same project directory.
-5. Run the client:
-   ```
-   python client.py
-   ```
+### Client
 
-   The client will connect to the server and prompt:
-   ```
-   Connected to server at localhost:3490
-   Enter command (or 'quit' to exit):
-   ```
+`client.py`:
 
-<h3>Using the application</h3>
+- Connects to the server over TCP
+- Reads commands from the terminal
+- Sends commands to the server
+- Displays server responses
+- Closes the connection when the user enters `quit`
 
-Once the client is running, you can type commands into the console:
+## Project Structure
 
-- `SET` Command:
-  - Store a key-value pair.
+```text
+key-value-storage/
+├── client.py       # Interactive TCP client
+├── server.py       # Multithreaded TCP server and key-value store
+├── store.txt       # Persistent data file created at runtime
+└── README.md
+```
 
-  - Example:
-    ```
-    SET mykey myvalue
-    ```
-      - Expected Response:
-        ```
-        Added key 'mykey' with value 'myvalue'
-        ```
+## Requirements
 
-- `GET` Command:
-  - Retrieve the value for a specific key.
+- Python 3.8 or newer
+- No external packages are required
 
-  - Example:
-    ```
-    GET mykey
-    ```
-      - Expected Response:
-        ```
-        myvalue
-        ```
+The project uses only Python standard-library modules, including:
 
-- `REMOVE` Command:
-  - Delete a key-value pair.
+- `socket`
+- `threading`
+- `os`
 
-  - Example:
-    ```
-    REMOVE mykey
-    ```
-      - Expected Response:
-        ```
-        Removed key 'mykey'.
-        ```
+## Getting Started
 
-- `PRINT` Command:
-  - Display all stored key-value pairs.
+### 1. Clone the repository
 
-  - Example:
-    ```
-    PRINT
-    ```
-      - Expected Response:
-        A list of all key-value pairs or "Store is empty." if no data exists.
+```bash
+git clone https://github.com/BrianKYildirim/key-value-storage.git
+cd key-value-storage
+```
 
-- `quit` Command:
-  - Disconnect the client.
+### 2. Start the server
 
-  - Example:
-    ```
-    quit
-    ```
-      - Expected Response:
-        ```
-        Exiting client.
-        Connection closed.
-        ```
+Open a terminal in the project directory and run:
 
-<h3>Troubleshooting</h3>
+```bash
+python server.py
+```
 
-**No Response on Client:**
-Ensure that the server is running. Check the server’s output for debug messages and confirm that the command is being processed.
+The server listens on:
 
-**Port Issues:**
-Verify that port 3490 is available and not blocked by any firewall or security settings.
+```text
+0.0.0.0:3490
+```
 
-**Data Persistence:**
-The data is stored in store.txt in the project directory. If you want a fresh start, you can delete this file.
+You should see:
 
-<br/>
-<h3>Additional Information</h3>
+```text
+Server listening on 0.0.0.0:3490
+```
 
-**Shutdown:**
-The server can be stopped by pressing Ctrl+C in the terminal running the server.
+### 3. Start a client
 
-<br/>
-Happy coding!
+Open a second terminal in the same directory and run:
+
+```bash
+python client.py
+```
+
+The client connects to the local server:
+
+```text
+Connected to server at localhost:3490
+```
+
+You can then enter commands interactively.
+
+## Command Protocol
+
+Commands are case-insensitive. Each command should be entered on its own line.
+
+### `SET`
+
+Stores or updates a key-value pair.
+
+```text
+SET username brian
+```
+
+Example response:
+
+```text
+Added key 'username' with value 'brian'
+```
+
+> Values currently support a single whitespace-delimited token. For example, `SET first_name Brian` works, but values containing spaces are not supported by the current parser.
+
+### `GET`
+
+Retrieves the value associated with a key.
+
+```text
+GET username
+```
+
+Example response:
+
+```text
+brian
+```
+
+If the key does not exist:
+
+```text
+Key 'username' not found.
+```
+
+### `REMOVE`
+
+Deletes a key-value pair.
+
+```text
+REMOVE username
+```
+
+Example response:
+
+```text
+Removed key 'username'.
+```
+
+### `PRINT`
+
+Displays every key-value pair currently stored.
+
+```text
+PRINT
+```
+
+Example response:
+
+```text
+[KEY]: username    [VALUE]: brian
+```
+
+If the store is empty:
+
+```text
+Store is empty.
+```
+
+### `quit`
+
+Disconnects the client from the server.
+
+```text
+quit
+```
+
+The server closes the client connection while remaining available for other clients.
+
+## Persistence
+
+The key-value store is persisted in `store.txt`.
+
+Each record is saved as:
+
+```text
+key<TAB>value
+```
+
+For example:
+
+```text
+username    brian
+language    Python
+```
+
+The file is loaded automatically when the server starts. Changes made through `SET` and `REMOVE` are written to disk immediately.
+
+To reset the database, stop the server and delete `store.txt`:
+
+```bash
+rm store.txt
+```
+
+On Windows PowerShell:
+
+```powershell
+Remove-Item store.txt
+```
+
+The file will be recreated when new data is stored.
+
+## Concurrency Model
+
+The server uses a thread-per-client model:
+
+1. The main server thread listens for incoming connections.
+2. Each client connection is accepted by the server.
+3. A new daemon thread handles that client.
+4. All client threads share the same `KeyValueStore`.
+5. A `threading.RLock` protects reads, updates, removals, and persistence operations.
+
+This allows multiple clients to connect and issue commands concurrently while preventing unsafe simultaneous access to the shared dictionary and persistence file.
+
+## Error Handling
+
+The server reports errors for:
+
+- Empty commands
+- Unknown commands
+- Missing command arguments
+- Attempts to retrieve nonexistent keys
+- Attempts to remove nonexistent keys
+- Connection and socket failures
+- Malformed persistence records
+
+The server can be stopped gracefully with:
+
+```text
+Ctrl+C
+```
+
+## Troubleshooting
+
+### The client cannot connect
+
+Make sure the server is running first:
+
+```bash
+python server.py
+```
+
+Also verify that port `3490` is available and not blocked by a firewall.
+
+### The port is already in use
+
+Another process may already be using port `3490`. Stop that process or change the port in both `server.py` and `client.py`.
+
+### Stored data disappeared
+
+The server stores data in `store.txt` in the project directory. Make sure you are running the server from the repository directory and that the file has not been deleted or moved.
+
+### The server does not respond
+
+Check the server terminal for connection, command-processing, or socket errors. Also confirm that commands follow the documented format.
+
+## Possible Future Improvements
+
+- Support values containing spaces or quoted strings
+- Add commands for clearing the entire store
+- Add configurable host and port arguments
+- Replace the text file with SQLite or another durable database
+- Add request framing for larger messages
+- Add automated unit and integration tests
+- Add authentication and encrypted connections
+- Use a thread pool instead of creating an unbounded thread per client
+- Add structured logging
+
+## License
+
+This project is available for educational and personal use. Add a formal license if you intend to distribute or reuse it publicly.
+
+---
+
+Built with Python sockets, threads, and the standard library.
