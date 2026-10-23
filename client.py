@@ -59,8 +59,10 @@ class Client:
         try:
             while True:  # Prompts the user for a command, sends it to the server, and then waits for a response.
                 message = input("Enter command (or 'quit' to exit): ")
+                if not message.strip():
+                    continue  # An empty line would send 0 bytes, and the client would then wait forever for a reply.
                 self.send(message)
-                if message.lower() == "quit":
+                if message.strip().lower() == "quit":  # The same check the server makes.
                     print("Exiting client.", flush=True)
                     break
                     # If the command is “quit” (or if the server disconnects), it
