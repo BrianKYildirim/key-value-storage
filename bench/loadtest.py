@@ -10,6 +10,10 @@
 Each client is a separate process, so client-side work does not share a GIL. Commands alternate
 SET and GET over a fixed key space that is filled before measuring, so every SET rewrites a file
 of the same size. Standard library only.
+
+With --raw-dir, every run also writes its measured per-command latencies in nanoseconds (one list
+per client, in command order) as JSON: <raw-dir>/c<clients>.json for run, and
+<raw-dir>/rep<NN>-<variant>-c<clients>.json for matrix.
 """
 
 import argparse
@@ -52,11 +56,23 @@ def _worker(host, port, index, commands, warmup, keys, barrier, results):
     finished = time.monotonic()
     sock.sendall(b"quit")
     sock.close()
-    results.put((started, finished, latencies))
+    results.put((started, finished, latencies, index))
 
 
-def run_load(host, port, clients, commands, warmup=200, keys=100):
-    """Returns throughput and latency percentiles for one run."""
+def write_raw(path, clients, commands, warmup, keys, collected):
+    """Per-command latencies of one run as JSON: latency_ns[i] is client i's list, in command order."""
+    by_client = [c[2] for c in sorted(collected, key=lambda c: c[3])]
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump({"unit": "ns", "clock": "time.perf_counter_ns, one sendall() and one recv(1024) per command",
+                   "clients": clients, "commands_per_client": commands, "warmup_per_client": warmup, "keys": keys,
+                   "latency_ns": by_client}, f, separators=(",", ":"))
+        f.write("\n")
+
+
+def run_load(host, port, clients, commands, warmup=200, keys=100, raw_path=None):
+    """Returns throughput and latency percentiles for one run. With raw_path, also writes every measured
+    per-command latency there (see write_raw)."""
     with socket.create_connection((host, port), timeout=30) as sock:  # fill the key space
         for k in range(keys):
             sock.sendall(b"SET k%d initial" % k)
@@ -74,6 +90,8 @@ def run_load(host, port, clients, commands, warmup=200, keys=100):
         p.join(30)
         if p.exitcode != 0:
             raise RuntimeError("load worker failed")
+    if raw_path:
+        write_raw(raw_path, clients, commands, warmup, keys, collected)
     start = min(c[0] for c in collected)
     end = max(c[1] for c in collected)
     latencies = sorted(l for c in collected for l in c[2])
@@ -149,8 +167,18 @@ def _wait_for_quiet(max_load, timeout=1800):
         time.sleep(5)
 
 
+def _windows_cpu():
+    """ProcessorNameString from the registry; platform.processor() gives "Intel64 Family 6 Model ..." on Windows."""
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"HARDWARE\DESCRIPTION\System\CentralProcessor\0") as k:
+            return str(winreg.QueryValueEx(k, "ProcessorNameString")[0]).strip() or None
+    except (ImportError, OSError):
+        return None
+
+
 def environment():
-    cpu = platform.processor() or "unknown"
+    cpu = (_windows_cpu() if os.name == "nt" else None) or platform.processor() or "unknown"
     try:
         with open("/proc/cpuinfo") as f:
             for line in f:
@@ -182,7 +210,7 @@ def _matrix(args, tmp):
             f.write(source)
         rev = subprocess.run(["git", "-C", REPO, "rev-parse", "--short", args.baseline_ref], check=True,
                              capture_output=True, text=True).stdout.strip()
-        variants.append({"name": "original server.py (%s)" % rev, "kind": "original",
+        variants.append({"key": "original", "name": "original server.py (%s)" % rev, "kind": "original",
                          "dir": os.path.join(tmp, "original")})
     variants += [v for v in [
         {"key": "off", "name": "new, observability off", "kind": "new", "args": []},
@@ -200,11 +228,16 @@ def _matrix(args, tmp):
                 port = _free_port()
                 proc = _start(variant, workdir, port)
                 load_before = _loadavg()
+                raw = (os.path.join(args.raw_dir, "rep%02d-%s-c%d.json" % (rep + 1, variant["key"], clients))
+                       if args.raw_dir else None)
                 try:
-                    result = run_load("127.0.0.1", port, clients, args.commands, args.warmup, args.keys)
+                    result = run_load("127.0.0.1", port, clients, args.commands, args.warmup, args.keys, raw)
                 finally:
                     _stop(proc)
                 result["loadavg_1m_before"], result["loadavg_1m_after"] = load_before, _loadavg()
+                result["rep"], result["variant_key"] = rep + 1, variant["key"]
+                if raw:
+                    result["raw"] = os.path.basename(raw)
                 runs.setdefault((variant["name"], clients), []).append(result)
                 print("rep %d  %-45s %2d clients  %8.0f cmd/s  p50 %7.1f us  p95 %7.1f us  load %s -> %s"
                       % (rep + 1, variant["name"], clients, result["cmd_per_s"], result["p50_us"],
@@ -213,12 +246,16 @@ def _matrix(args, tmp):
     for variant in variants:
         for clients in args.clients:
             rs = runs[(variant["name"], clients)]
-            summary.append({"variant": variant["name"], "clients": clients, "runs": len(rs),
-                            "cmd_per_s": statistics.median(r["cmd_per_s"] for r in rs),
-                            "cmd_per_s_min": min(r["cmd_per_s"] for r in rs),
-                            "cmd_per_s_max": max(r["cmd_per_s"] for r in rs),
-                            "p50_us": statistics.median(r["p50_us"] for r in rs),
-                            "p95_us": statistics.median(r["p95_us"] for r in rs)})
+            entry = {"variant": variant["name"], "clients": clients, "runs": len(rs),
+                     "cmd_per_s": statistics.median(r["cmd_per_s"] for r in rs),
+                     "cmd_per_s_min": min(r["cmd_per_s"] for r in rs),
+                     "cmd_per_s_max": max(r["cmd_per_s"] for r in rs),
+                     "p50_us": statistics.median(r["p50_us"] for r in rs),
+                     "p95_us": statistics.median(r["p95_us"] for r in rs),
+                     "p99_us": statistics.median(r["p99_us"] for r in rs)}
+            for p in ("p50_us", "p95_us", "p99_us"):
+                entry[p + "_min"], entry[p + "_max"] = min(r[p] for r in rs), max(r[p] for r in rs)
+            summary.append(entry)
     report = {"environment": environment(),
               "settings": {"commands_per_client": args.commands, "warmup_per_client": args.warmup,
                            "keys": args.keys, "mix": "alternating SET/GET (50/50)", "repeat": args.repeat,
@@ -258,6 +295,7 @@ def main():
         p.add_argument("--commands", type=int, default=2000, help="measured commands per client (default 2000)")
         p.add_argument("--warmup", type=int, default=200, help="unmeasured commands per client (default 200)")
         p.add_argument("--keys", type=int, default=100, help="size of the key space (default 100)")
+        p.add_argument("--raw-dir", help="also write every measured per-command latency (ns) as JSON into this directory")
     m = sub.choices["matrix"]
     m.add_argument("--baseline-ref", help="git ref whose server.py is the baseline, e.g. main")
     m.add_argument("--clients", type=int, nargs="+", default=[1, 4, 16])
@@ -269,7 +307,8 @@ def main():
                    choices=["original", "off", "ring", "jsonl"], help="which server variants to run (default all)")
     args = parser.parse_args()
     if args.mode == "run":
-        print(json.dumps(run_load(args.host, args.port, args.clients, args.commands, args.warmup, args.keys)))
+        raw = os.path.join(args.raw_dir, "c%d.json" % args.clients) if args.raw_dir else None
+        print(json.dumps(run_load(args.host, args.port, args.clients, args.commands, args.warmup, args.keys, raw)))
     else:
         matrix(args)
 
