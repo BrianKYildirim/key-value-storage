@@ -1,0 +1,59 @@
+test_blank_lines_and_padded_quit (test_client.InteractiveClientTest.test_blank_lines_and_padded_quit) ... ok
+test_distinct_keys (test_concurrency.ConcurrencyTest.test_distinct_keys) ... ok
+test_same_key (test_concurrency.ConcurrencyTest.test_same_key) ... ok
+test_clients_beyond_the_limit_wait_for_a_free_slot (test_connections.ConnectionLimitTest.test_clients_beyond_the_limit_wait_for_a_free_slot) ... ok
+test_limit_must_be_positive (test_connections.ConnectionLimitTest.test_limit_must_be_positive) ... ok
+test_a_command_in_progress_finishes_before_its_connection_closes (test_connections.GracefulShutdownTest.test_a_command_in_progress_finishes_before_its_connection_closes) ... ok
+test_ctrl_c_with_a_connected_client (test_connections.GracefulShutdownTest.test_ctrl_c_with_a_connected_client) ... skipped 'uses SIGINT'
+test_open_connections_are_closed_cleanly (test_connections.GracefulShutdownTest.test_open_connections_are_closed_cleanly) ... ok
+test_full_subscription_drops_and_counts (test_inspection.BoundedBuffersTest.test_full_subscription_drops_and_counts) ... ok
+test_ring_buffer_keeps_only_the_latest_events (test_inspection.BoundedBuffersTest.test_ring_buffer_keeps_only_the_latest_events) ... ok
+test_stalled_consumers_never_block_serving (test_inspection.BoundedBuffersTest.test_stalled_consumers_never_block_serving) ... skipped 'needs a FIFO'
+test_host_header_must_name_the_loopback_endpoint (test_inspection.EndpointTest.test_host_header_must_name_the_loopback_endpoint) ... ok
+test_read_only (test_inspection.EndpointTest.test_read_only) ... ok
+test_valid_json_matching_the_schema (test_inspection.EndpointTest.test_valid_json_matching_the_schema) ... ok
+test_truncation_bounds_every_event (test_inspection.RedactionAndTruncationTest.test_truncation_bounds_every_event) ... ok
+test_values_are_redacted_everywhere (test_inspection.RedactionAndTruncationTest.test_values_are_redacted_everywhere) ... ok
+test_binds_to_localhost_by_default (test_inspection.SnapshotTest.test_binds_to_localhost_by_default) ... ok
+test_file_view (test_inspection.SnapshotTest.test_file_view) ... ok
+test_no_file_yet (test_inspection.SnapshotTest.test_no_file_yet) ... ok
+test_snapshot_equals_get_and_print (test_inspection.SnapshotTest.test_snapshot_equals_get_and_print) ... ok
+test_an_observer_belongs_to_one_server (test_isolation.IsolationTest.test_an_observer_belongs_to_one_server) ... ok
+test_no_module_level_mutable_state (test_isolation.IsolationTest.test_no_module_level_mutable_state) ... ok
+test_two_observed_servers_side_by_side (test_isolation.IsolationTest.test_two_observed_servers_side_by_side) ... ok
+test_unobserved_server_next_to_an_observed_one (test_isolation.IsolationTest.test_unobserved_server_next_to_an_observed_one) ... ok
+test_errors_match_rlock (test_lock.InstrumentedRLockSemanticsTest.test_errors_match_rlock) ... ok
+test_measured_wait_and_hold_under_real_contention (test_lock.InstrumentedRLockSemanticsTest.test_measured_wait_and_hold_under_real_contention) ... ok
+test_non_blocking_and_timeout_acquire_while_held (test_lock.InstrumentedRLockSemanticsTest.test_non_blocking_and_timeout_acquire_while_held) ... ok
+test_reentrancy_and_context_manager (test_lock.InstrumentedRLockSemanticsTest.test_reentrancy_and_context_manager) ... ok
+test_waiting_counts_threads_inside_acquire (test_lock.InstrumentedRLockSemanticsTest.test_waiting_counts_threads_inside_acquire) ... ok
+test_a_command_waiting_for_the_store_lock (test_lock.ServerLockContentionTest.test_a_command_waiting_for_the_store_lock) ... ok
+test_a_well_formed_file_prints_nothing_extra (test_persistence.MalformedLinesTest.test_a_well_formed_file_prints_nothing_extra) ... ok
+test_malformed_lines_are_skipped_and_reported (test_persistence.MalformedLinesTest.test_malformed_lines_are_skipped_and_reported) ... ok
+test_parse_has_no_unreachable_branch (test_persistence.MalformedLinesTest.test_parse_has_no_unreachable_branch) ... ok
+test_files_from_older_versions_are_still_read (test_persistence.StoreFileFormatTest.test_files_from_older_versions_are_still_read) ... ok
+test_utf8_and_newlines_do_not_depend_on_the_locale (test_persistence.StoreFileFormatTest.test_utf8_and_newlines_do_not_depend_on_the_locale) ... skipped 'uses SIGINT and a C locale'
+test_hook_failures_never_change_responses (test_protocol_golden.GoldenProtocolTest.test_hook_failures_never_change_responses) ... ok
+test_observability_off (test_protocol_golden.GoldenProtocolTest.test_observability_off) ... ok
+test_observability_on_with_every_channel_active (test_protocol_golden.GoldenProtocolTest.test_observability_on_with_every_channel_active) ... ok
+test_observability_on_with_redaction_and_tiny_limits (test_protocol_golden.GoldenProtocolTest.test_observability_on_with_redaction_and_tiny_limits) ... ok
+test_shutdown_from_another_thread_makes_start_return (test_protocol_golden.ShutdownTest.test_shutdown_from_another_thread_makes_start_return) ... ok
+test_defaults_are_the_original_ones (test_stdout.ArgumentDefaultsTest.test_defaults_are_the_original_ones) ... ok
+test_environment_then_flags (test_stdout.ArgumentDefaultsTest.test_environment_then_flags) ... ok
+test_both_modes_print_the_same_lines (test_stdout.CliStdoutTest.test_both_modes_print_the_same_lines) ... skipped 'uses SIGINT and select() on pipes'
+test_observability_off (test_stdout.CliStdoutTest.test_observability_off) ... skipped 'uses SIGINT and select() on pipes'
+test_observability_on_keeps_stdout_identical (test_stdout.CliStdoutTest.test_observability_on_keeps_stdout_identical) ... skipped 'uses SIGINT and select() on pipes'
+test_python_server_py_with_no_options (test_stdout.NoOptionsTest.test_python_server_py_with_no_options) ... skipped 'uses SIGINT'
+test_every_command_type_in_order (test_tracing.EventSequenceTest.test_every_command_type_in_order) ... ok
+test_every_event_matches_the_schema (test_tracing.EventSequenceTest.test_every_event_matches_the_schema) ... ok
+test_mutation_and_save_events_match_store_txt (test_tracing.EventSequenceTest.test_mutation_and_save_events_match_store_txt) ... ok
+test_readme_documents_every_event_field (test_tracing.EventSequenceTest.test_readme_documents_every_event_field) ... ok
+test_undecodable_bytes_and_peer_disconnect (test_tracing.EventSequenceTest.test_undecodable_bytes_and_peer_disconnect) ... ok
+test_failed_load_is_reported (test_tracing.LoadAndSaveEventsTest.test_failed_load_is_reported) ... ok
+test_failed_save_is_reported_while_the_reply_is_unchanged (test_tracing.LoadAndSaveEventsTest.test_failed_save_is_reported_while_the_reply_is_unchanged) ... skipped 'needs a non-root POSIX user for chmod'
+test_load_of_existing_file (test_tracing.LoadAndSaveEventsTest.test_load_of_existing_file) ... ok
+
+----------------------------------------------------------------------
+Ran 54 tests in 14.235s
+
+OK (skipped=8)

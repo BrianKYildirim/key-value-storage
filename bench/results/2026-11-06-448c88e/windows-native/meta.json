@@ -1,0 +1,1139 @@
+{
+ "command": [
+  "python",
+  "bench/run_bench.py",
+  "--env",
+  "windows-native",
+  "--session-date",
+  "2026-11-06"
+ ],
+ "date_utc": "2026-11-06T15:21:33Z",
+ "date_utc_end": "2026-11-06T15:27:30Z",
+ "environment_id": "windows-native",
+ "hardware": {
+  "cpu_model": "11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz",
+  "logical_cpus": 8,
+  "memory_bytes": 16992018432,
+  "physical_cores": 4
+ },
+ "instrumentation": "kv-observability-ring: the ring variant (--inspect-port 0, build instrumented:kv-observability-ring); kv-observability-jsonl: the jsonl variant (--trace-jsonl, --inspect-port 0, build instrumented:kv-observability-jsonl); original and off are uninstrumented",
+ "library": {
+  "baseline": {
+   "ref": "7ccdff6",
+   "sha": "7ccdff6fb69e06ef5bb7c3a4cdfd2409a1ac22e0"
+  },
+  "example_trace_reply": "Added key 'username' with value 'brian'\n",
+  "server": "server.py on 127.0.0.1, stdout and stderr to the null device",
+  "third_party_libraries": "none (standard library only)",
+  "trace_clock": {
+   "name": "time.monotonic_ns (GetTickCount64())",
+   "resolution_ns": 15625000.0,
+   "used_by": "observability.py event durations (wait_ns, hold_ns, duration_ns, latency_ns, send_ns)"
+  }
+ },
+ "load": {
+  "cpu_busy_pct_end": 3.73,
+  "cpu_busy_pct_start": 20.2,
+  "loadavg_1m_end": null,
+  "loadavg_1m_start": null
+ },
+ "notes": [
+  "raw text: absolute repo, temporary and home paths replaced by <repo>, <tmp> and <home>; line endings normalized to LF",
+  "matrix.txt is loadtest.py's stderr progress lines and markdown table; matrix.json is its --json report with rep, variant_key and raw added to every run",
+  "no load average on Windows: loadtest.py --max-load is not used and runs are not gated one by one; the CPU busy gate runs once before the matrix",
+  "8 of 54 tests skipped on this platform; raw/tests.txt and summary tests_skipped list each one with its reason (D-12)",
+  "example trace: server.py runs in an empty temporary directory with --store store.txt, so the trace's path is store.txt as in the README; the server is stopped after its conn.close event with TerminateProcess, so the trace has no server.stop event",
+  "trace timings use time.monotonic_ns (GetTickCount64()) with 1.5625e+07 ns resolution here, so sub-tick durations in raw/example-trace.jsonl (and in the jsonl and ring variants' events) read as 0; back sub-millisecond trace figures with a finer-clock environment"
+ ],
+ "os": {
+  "build": "26300.9818",
+  "display_version": "26H2",
+  "family": "Windows",
+  "kernel": null,
+  "name": "Windows 11 Home",
+  "version": "10.0.26300",
+  "wsl": null
+ },
+ "power": {
+  "ac_line": true,
+  "scheme": "Balanced",
+  "source": "GetSystemPowerStatus; powercfg /getactivescheme"
+ },
+ "power_end": {
+  "ac_line": true,
+  "scheme": "Balanced",
+  "source": "GetSystemPowerStatus; powercfg /getactivescheme"
+ },
+ "project": "key-value-storage",
+ "raw_files": [
+  {
+   "bytes": 4963,
+   "path": "raw/example-trace.jsonl",
+   "sha256": "90277caf985382e2f1c01417e64cd2908827c002c73bdea89d4820cc191f26b9"
+  },
+  {
+   "bytes": 25670,
+   "path": "raw/matrix.json",
+   "sha256": "205d089a915bdb38323567e945075047ae3cf9b66c01ee78ce8eff5bda4d3de0"
+  },
+  {
+   "bytes": 9209,
+   "path": "raw/matrix.txt",
+   "sha256": "04e75c53710f8b874736ea123ea7429294fed6e3aa98e1e8b7ce0dfd498f7982"
+  },
+  {
+   "bytes": 14151,
+   "path": "raw/matrix/rep01-jsonl-c1.json",
+   "sha256": "b3edd55b4af69a7a4e48f37e626e4192b28801e24cf60b2283803b54a39892b6"
+  },
+  {
+   "bytes": 256913,
+   "path": "raw/matrix/rep01-jsonl-c16.json",
+   "sha256": "318f7408ea711f604e7ec7db71c78b8e534f85986d121914296e12444fde73c1"
+  },
+  {
+   "bytes": 62964,
+   "path": "raw/matrix/rep01-jsonl-c4.json",
+   "sha256": "734959069180d9480d13cd0c74167df7e9a684cf631a01f2d30dc651371d8c3c"
+  },
+  {
+   "bytes": 13222,
+   "path": "raw/matrix/rep01-off-c1.json",
+   "sha256": "9b9c21db13d7830f53f7103df794e67b8d9cf350ace6df11d0d7b42ec2d09c31"
+  },
+  {
+   "bytes": 256215,
+   "path": "raw/matrix/rep01-off-c16.json",
+   "sha256": "9de144ca92b4700fca6a0b49d422d38f454aea9c00cb292d68cab998bf3f91a4"
+  },
+  {
+   "bytes": 57001,
+   "path": "raw/matrix/rep01-off-c4.json",
+   "sha256": "2be6217dabe71faeb55c8fe19062bb2fb6d5ebb0555fc365cbacc862aaf0b147"
+  },
+  {
+   "bytes": 13202,
+   "path": "raw/matrix/rep01-original-c1.json",
+   "sha256": "ff877534a5d699cfc03ebbe1b869733d907023527a670b8df9455f622d237fe1"
+  },
+  {
+   "bytes": 256187,
+   "path": "raw/matrix/rep01-original-c16.json",
+   "sha256": "9e2f3595513550b1414145f95a83e7d445985ab08abad2ea7e1a676520658454"
+  },
+  {
+   "bytes": 57866,
+   "path": "raw/matrix/rep01-original-c4.json",
+   "sha256": "ec4b71fa96c572a28dd53515db889390c6245710040bb558f223e40b58d98cb6"
+  },
+  {
+   "bytes": 13369,
+   "path": "raw/matrix/rep01-ring-c1.json",
+   "sha256": "0652c3794a5b39b5fcaf663164b299c6f35cbfbc7f8bb15a323379efc958e7ac"
+  },
+  {
+   "bytes": 256303,
+   "path": "raw/matrix/rep01-ring-c16.json",
+   "sha256": "bc2c8df70e7354559d86f5f038238690a98fbcc68da693d96b8780236faa2e40"
+  },
+  {
+   "bytes": 58892,
+   "path": "raw/matrix/rep01-ring-c4.json",
+   "sha256": "c9cae76cc1e5c0f1b9dba153c6957a0c72965c1fab5aca6fc826346480502f89"
+  },
+  {
+   "bytes": 14197,
+   "path": "raw/matrix/rep02-jsonl-c1.json",
+   "sha256": "7e30f71621a9ff03bc1d6fd1de76d4b822e57abe51d82721ea4ff820af6c85ff"
+  },
+  {
+   "bytes": 256562,
+   "path": "raw/matrix/rep02-jsonl-c16.json",
+   "sha256": "5f887b272e5148a7f4111a781bff8968caf39bae417aa17c8ec2e60c8c71ccb9"
+  },
+  {
+   "bytes": 63066,
+   "path": "raw/matrix/rep02-jsonl-c4.json",
+   "sha256": "920a0cde7177b1427c80301be17bf9d96c8e2e04a2265521e014b60686711d3f"
+  },
+  {
+   "bytes": 13347,
+   "path": "raw/matrix/rep02-off-c1.json",
+   "sha256": "072c4c851dad911c3fab93696266db5b476b670bf2552fb070f36266d2548320"
+  },
+  {
+   "bytes": 256231,
+   "path": "raw/matrix/rep02-off-c16.json",
+   "sha256": "6be620a885787b99c1d48174070a404c9faaeba41ca924c95484443348a28ab1"
+  },
+  {
+   "bytes": 59623,
+   "path": "raw/matrix/rep02-off-c4.json",
+   "sha256": "2dfa364a512880d78dd1bb12dcb936ee746e06360c73b9400d3b5ec0cc1ddf91"
+  },
+  {
+   "bytes": 13217,
+   "path": "raw/matrix/rep02-original-c1.json",
+   "sha256": "58a0a571f5c52b8b8284f2a69958091d5adc4779aa6cc3403c075c6e9360fe05"
+  },
+  {
+   "bytes": 256350,
+   "path": "raw/matrix/rep02-original-c16.json",
+   "sha256": "fdddfd65511423e528e1205bc8ff53e3650042bb487d357505eda9c8eb2d9462"
+  },
+  {
+   "bytes": 58663,
+   "path": "raw/matrix/rep02-original-c4.json",
+   "sha256": "d198b965b12ea82e7bf9b2b734936db0169dc989cd013fa5eb1e933114c2a949"
+  },
+  {
+   "bytes": 13347,
+   "path": "raw/matrix/rep02-ring-c1.json",
+   "sha256": "08c5c350ba3fa07051e0e35a5056244913dbf701413e28de20a84050823eb912"
+  },
+  {
+   "bytes": 256878,
+   "path": "raw/matrix/rep02-ring-c16.json",
+   "sha256": "3851883ebdfb0be1cf06f21615c72b8f201340236f39b64fbff22f9610229eef"
+  },
+  {
+   "bytes": 60995,
+   "path": "raw/matrix/rep02-ring-c4.json",
+   "sha256": "d459142cba1aa51e9c0827971233305de2b7c8179650082b4ef4c9f62d93b777"
+  },
+  {
+   "bytes": 14176,
+   "path": "raw/matrix/rep03-jsonl-c1.json",
+   "sha256": "2ffe67c6b2f6897f13285ef6f9e6558dd5956608417106b6157ecef6c0ce5db9"
+  },
+  {
+   "bytes": 256486,
+   "path": "raw/matrix/rep03-jsonl-c16.json",
+   "sha256": "7b02fe24b31670ad2dcfc76980309ef812ee1cc0ca9a1264f1774aa6035f3085"
+  },
+  {
+   "bytes": 62968,
+   "path": "raw/matrix/rep03-jsonl-c4.json",
+   "sha256": "26e89a77ae672ca2a8487fea24b96dfdb221026939020117d524d7e3a7191492"
+  },
+  {
+   "bytes": 13208,
+   "path": "raw/matrix/rep03-off-c1.json",
+   "sha256": "087e361ea45e621f8bfef960cb85a91c5ea2dc221aa2719b8e2f4f207a78894c"
+  },
+  {
+   "bytes": 256270,
+   "path": "raw/matrix/rep03-off-c16.json",
+   "sha256": "17d3c33e7de58f0cd4a8475a0cfd4354dbf8646c8b147ced2a3ae94875bf83a1"
+  },
+  {
+   "bytes": 58238,
+   "path": "raw/matrix/rep03-off-c4.json",
+   "sha256": "5a6d3b0e034f476229b593508f0a3fa29672a60b4498031f3b797a35d340f365"
+  },
+  {
+   "bytes": 13236,
+   "path": "raw/matrix/rep03-original-c1.json",
+   "sha256": "121e6031f5713e74b0d98af967a92cfda80e701bd81528391e785c412a8b7ba7"
+  },
+  {
+   "bytes": 257155,
+   "path": "raw/matrix/rep03-original-c16.json",
+   "sha256": "6754113c929861119c6ce0af5ae8c433db16a7a2501f49439729ea62975faf85"
+  },
+  {
+   "bytes": 59018,
+   "path": "raw/matrix/rep03-original-c4.json",
+   "sha256": "1cb9d12739d2a40ac0127a6426cf29a75c52027c6126ce14be55bdb417436974"
+  },
+  {
+   "bytes": 14288,
+   "path": "raw/matrix/rep03-ring-c1.json",
+   "sha256": "56a026c6678627820fc844ce3432f676d2a9d1e44505ff1c40587fe85b22b02f"
+  },
+  {
+   "bytes": 256305,
+   "path": "raw/matrix/rep03-ring-c16.json",
+   "sha256": "a4ce1469b6460deaf52cc98c293277f610fd27f3299b1de30b6be235a69716e1"
+  },
+  {
+   "bytes": 59702,
+   "path": "raw/matrix/rep03-ring-c4.json",
+   "sha256": "cc6c21bd12ce9386ede4804116450d09029149ba1a0c1e8a6b75738c5103f119"
+  },
+  {
+   "bytes": 14226,
+   "path": "raw/matrix/rep04-jsonl-c1.json",
+   "sha256": "90aa6fb12c32f750a069571de7bf3feb2d6e8e4eb8de034836bb74897acd9961"
+  },
+  {
+   "bytes": 256565,
+   "path": "raw/matrix/rep04-jsonl-c16.json",
+   "sha256": "1c654cab6f444ccf2059ce5be20322debab9f55ba0754ba96d7d8b3dd1f24e9f"
+  },
+  {
+   "bytes": 62974,
+   "path": "raw/matrix/rep04-jsonl-c4.json",
+   "sha256": "833b8f9069866ae267732711f9da86f41511efcc4f5be922e7e8dd654e199b8e"
+  },
+  {
+   "bytes": 13257,
+   "path": "raw/matrix/rep04-off-c1.json",
+   "sha256": "cd5bff8c82329ce157b18add0162a7601e1de65c3691cc1a95116b412ab3f292"
+  },
+  {
+   "bytes": 256226,
+   "path": "raw/matrix/rep04-off-c16.json",
+   "sha256": "913a29c40c712a35260adae3e41a0a7ad2c337fbae6541d225904a9915283c40"
+  },
+  {
+   "bytes": 57721,
+   "path": "raw/matrix/rep04-off-c4.json",
+   "sha256": "83a3c25ac6738855c18d5ac40ef3b8a1b9d92f1aa59ea3acd93bc5ef306f5cc1"
+  },
+  {
+   "bytes": 13203,
+   "path": "raw/matrix/rep04-original-c1.json",
+   "sha256": "cdcb1f175f04367d14bb4f18a71576fa2b4835b6762e65ca6fdb7125146d341a"
+  },
+  {
+   "bytes": 256753,
+   "path": "raw/matrix/rep04-original-c16.json",
+   "sha256": "e43fdbf4f265dfce36227f8839929490f57a269810c9ede2285fb659158ed47c"
+  },
+  {
+   "bytes": 59006,
+   "path": "raw/matrix/rep04-original-c4.json",
+   "sha256": "2faf8aaca28d619a63531138670e344f4df1c1382eb9aaceec909d4a3cc3d12c"
+  },
+  {
+   "bytes": 13370,
+   "path": "raw/matrix/rep04-ring-c1.json",
+   "sha256": "3dfe4831ee08db44be2637563c85259e1d3f05aa3414661c24a394c38dffd01b"
+  },
+  {
+   "bytes": 257266,
+   "path": "raw/matrix/rep04-ring-c16.json",
+   "sha256": "1d491a21c34acddf13edc6b73dc651664a9c194591963aa2ac225191b1bc15e4"
+  },
+  {
+   "bytes": 60801,
+   "path": "raw/matrix/rep04-ring-c4.json",
+   "sha256": "2181b016ead83ab70adba646bcdc62d26f6cbb859b0777bb94f8e3fe5bba3d48"
+  },
+  {
+   "bytes": 14176,
+   "path": "raw/matrix/rep05-jsonl-c1.json",
+   "sha256": "f03cd464aee1d4e2c82eafad558253853ddd8fb893525f91f2112d61ebd28dac"
+  },
+  {
+   "bytes": 256685,
+   "path": "raw/matrix/rep05-jsonl-c16.json",
+   "sha256": "308da9a552248d2130cd3464176dff983066b919651c56fe6a4f996548ccbfe8"
+  },
+  {
+   "bytes": 62938,
+   "path": "raw/matrix/rep05-jsonl-c4.json",
+   "sha256": "693892ca67744b4b052a1914432ee0b0435d223aef030a8f7e8bbe7bef93d4e7"
+  },
+  {
+   "bytes": 13203,
+   "path": "raw/matrix/rep05-off-c1.json",
+   "sha256": "3572a2ef6dd47e1d84f87d85132d3156bd1fc3aa38e60cb8e6cfa36983f059be"
+  },
+  {
+   "bytes": 256291,
+   "path": "raw/matrix/rep05-off-c16.json",
+   "sha256": "0f36157669255e17f3c1eb15a1a9c4051ebab9617a5eb6097152252f92c5a993"
+  },
+  {
+   "bytes": 58441,
+   "path": "raw/matrix/rep05-off-c4.json",
+   "sha256": "2222736f5d994ea2eaa2d02abc890778b1c1b068621da4bbb43b7e7f18c244f1"
+  },
+  {
+   "bytes": 13200,
+   "path": "raw/matrix/rep05-original-c1.json",
+   "sha256": "0c758914046c51cff2edf3b709b319e16b0fb2839ac648d45482d2ff9756864e"
+  },
+  {
+   "bytes": 257311,
+   "path": "raw/matrix/rep05-original-c16.json",
+   "sha256": "e3760bef7d416fe6923d404cce98bc146199f8f755663a0a853d70ad6b5de221"
+  },
+  {
+   "bytes": 58994,
+   "path": "raw/matrix/rep05-original-c4.json",
+   "sha256": "5f177757fc3170c1a97ae1a82b1bf1e6eca8f606e92da43343b18a56457953da"
+  },
+  {
+   "bytes": 13440,
+   "path": "raw/matrix/rep05-ring-c1.json",
+   "sha256": "202abc5cb01ab72cb7661319ded8c88f4678bde2cef08f4ff2e4ecccafc07b5f"
+  },
+  {
+   "bytes": 256372,
+   "path": "raw/matrix/rep05-ring-c16.json",
+   "sha256": "fb0907548b900a1a3ec4ad29692172d3b4b8ea7eda5b4a11ef6b91bf87170ec3"
+  },
+  {
+   "bytes": 61238,
+   "path": "raw/matrix/rep05-ring-c4.json",
+   "sha256": "27efe85bca19630ff0bdf03c2c8268d718d348524f5448d2db4489b36e1876fa"
+  },
+  {
+   "bytes": 6814,
+   "path": "raw/tests.txt",
+   "sha256": "161030d188c1354fac573c571656d763df10f70983c3f25b7b4569c162616047"
+  }
+ ],
+ "schema": "bench-meta/1",
+ "session_date": "2026-11-06",
+ "source": {
+  "branch": "phase2-bench",
+  "describe": "448c88e",
+  "dirty": false,
+  "modified": [],
+  "repo": "BrianKYildirim/key-value-storage",
+  "sha": "448c88e1772dbb2c39d4dd0e2b0c03487cac4407",
+  "untracked": []
+ },
+ "tag": null,
+ "timer": {
+  "monotonic": true,
+  "name": "time.perf_counter_ns (QueryPerformanceCounter())",
+  "overhead_note": "not subtracted; one command round trip takes tens of microseconds or more",
+  "overhead_ns": null,
+  "resolution_ns": 100.0
+ },
+ "toolchain": {
+  "build": "3.11.18 (main, Oct 26 2026, 14:08:50) [MSC v.1944 64 bit (AMD64)]",
+  "executable_name": "python.exe",
+  "implementation": "cpython",
+  "packages": {
+   "pip": "26.2.2",
+   "setuptools": "84.2.0"
+  },
+  "version": "3.11.18"
+ },
+ "validity": {
+  "reasons": [],
+  "runs": [
+   {
+    "ac_line": true,
+    "busy_source": "GetSystemTimes",
+    "cpu_busy_pct": 6.64,
+    "file": "raw/matrix.json",
+    "reasons": [],
+    "step": "matrix",
+    "valid": true,
+    "waited_s": 1.0
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep01-jsonl-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep02-jsonl-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep03-jsonl-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep04-jsonl-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep05-jsonl-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep01-jsonl-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep02-jsonl-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep03-jsonl-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep04-jsonl-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep05-jsonl-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep01-jsonl-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep02-jsonl-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep03-jsonl-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep04-jsonl-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep05-jsonl-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "jsonl"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep01-off-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep02-off-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep03-off-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep04-off-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep05-off-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep01-off-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep02-off-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep03-off-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep04-off-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep05-off-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep01-off-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep02-off-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep03-off-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep04-off-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep05-off-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "off"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep01-original-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep02-original-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep03-original-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep04-original-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep05-original-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep01-original-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep02-original-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep03-original-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep04-original-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep05-original-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep01-original-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep02-original-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep03-original-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep04-original-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep05-original-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "original"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep01-ring-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep02-ring-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep03-ring-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep04-ring-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 1,
+    "file": "raw/matrix/rep05-ring-c1.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep01-ring-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep02-ring-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep03-ring-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep04-ring-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 4,
+    "file": "raw/matrix/rep05-ring-c4.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep01-ring-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 1,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep02-ring-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 2,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep03-ring-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 3,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep04-ring-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 4,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "clients": 16,
+    "file": "raw/matrix/rep05-ring-c16.json",
+    "loadavg_1m_before": null,
+    "reasons": [],
+    "rep": 5,
+    "step": "matrix_run",
+    "valid": true,
+    "variant": "ring"
+   },
+   {
+    "ac_line": true,
+    "busy_source": "GetSystemTimes",
+    "cpu_busy_pct": 8.37,
+    "file": "raw/example-trace.jsonl",
+    "reasons": [],
+    "step": "example_trace",
+    "valid": true,
+    "waited_s": 6.1
+   }
+  ],
+  "tests": {
+   "failed": 0,
+   "passed": 46,
+   "skipped": 8,
+   "total": 54
+  },
+  "valid": true
+ },
+ "workload": {
+  "baseline_ref": "7ccdff6",
+  "baseline_sha": "7ccdff6fb69e06ef5bb7c3a4cdfd2409a1ac22e0",
+  "clients": [
+   1,
+   4,
+   16
+  ],
+  "commands_per_client": 2000,
+  "example_trace": true,
+  "keys": 100,
+  "max_load": null,
+  "mix": "alternating SET/GET (50/50), client.py semantics: one sendall() and one recv(1024) per command",
+  "order": "interleaved: repeat, then variant, then client count; fresh server and store per run",
+  "repeat": 5,
+  "smoke": false,
+  "steps": [
+   [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+   ],
+   [
+    "python",
+    "bench/loadtest.py",
+    "matrix",
+    "--baseline-ref",
+    "7ccdff6",
+    "--repeat",
+    "5",
+    "--clients",
+    "1",
+    "4",
+    "16",
+    "--commands",
+    "2000",
+    "--warmup",
+    "200",
+    "--json",
+    "raw/matrix.json",
+    "--raw-dir",
+    "raw/matrix"
+   ],
+   [
+    "python",
+    "server.py",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "<free>",
+    "--store",
+    "store.txt",
+    "--trace-jsonl",
+    "raw/example-trace.jsonl"
+   ],
+   "one connection: send 'SET username brian', recv(1024), send 'quit'"
+  ],
+  "validity": {
+   "max_busy_pct": 10.0,
+   "max_load": null,
+   "quiet_timeout_s": 120.0
+  },
+  "variant_args": {
+   "jsonl": [
+    "--trace-jsonl",
+    "<run dir>/trace.jsonl",
+    "--inspect-port",
+    "0"
+   ],
+   "off": [],
+   "original": "server.Server(host='127.0.0.1', port=<free>).start() from git show <baseline>:server.py",
+   "ring": [
+    "--inspect-port",
+    "0"
+   ]
+  },
+  "variants": [
+   "original",
+   "off",
+   "ring",
+   "jsonl"
+  ],
+  "warmup_per_client": 200
+ }
+}

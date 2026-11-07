@@ -1,0 +1,76 @@
+rep 1  original server.py (7ccdff6)                   1 clients      4926 cmd/s  p50   234.0 us  p95   385.4 us  load None -> None
+rep 1  original server.py (7ccdff6)                   4 clients      5333 cmd/s  p50   710.6 us  p95  1284.7 us  load None -> None
+rep 1  original server.py (7ccdff6)                  16 clients      5251 cmd/s  p50  2972.8 us  p95  4306.3 us  load None -> None
+rep 1  new, observability off                         1 clients      5128 cmd/s  p50   238.9 us  p95   431.4 us  load None -> None
+rep 1  new, observability off                         4 clients      5818 cmd/s  p50   630.5 us  p95  1164.3 us  load None -> None
+rep 1  new, observability off                        16 clients      5902 cmd/s  p50  2652.5 us  p95  3693.3 us  load None -> None
+rep 1  new, on: ring buffer + inspection endpoint     1 clients      3876 cmd/s  p50   306.5 us  p95   502.7 us  load None -> None
+rep 1  new, on: ring buffer + inspection endpoint     4 clients      4376 cmd/s  p50   848.3 us  p95  1506.9 us  load None -> None
+rep 1  new, on: ring buffer + inspection endpoint    16 clients      3501 cmd/s  p50  4498.4 us  p95  6273.0 us  load None -> None
+rep 1  new, on: JSONL file + inspection endpoint      1 clients      2911 cmd/s  p50   351.4 us  p95   639.0 us  load None -> None
+rep 1  new, on: JSONL file + inspection endpoint      4 clients      2450 cmd/s  p50  1594.4 us  p95  2626.7 us  load None -> None
+rep 1  new, on: JSONL file + inspection endpoint     16 clients      2322 cmd/s  p50  6719.4 us  p95  9083.9 us  load None -> None
+rep 2  original server.py (7ccdff6)                   1 clients      4914 cmd/s  p50   235.7 us  p95   420.8 us  load None -> None
+rep 2  original server.py (7ccdff6)                   4 clients      4571 cmd/s  p50   844.8 us  p95  1467.9 us  load None -> None
+rep 2  original server.py (7ccdff6)                  16 clients      3821 cmd/s  p50  3982.4 us  p95  6244.9 us  load None -> None
+rep 2  new, observability off                         1 clients      4124 cmd/s  p50   233.8 us  p95   519.7 us  load None -> None
+rep 2  new, observability off                         4 clients      3908 cmd/s  p50   934.5 us  p95  1843.9 us  load None -> None
+rep 2  new, observability off                        16 clients      4452 cmd/s  p50  3476.2 us  p95  5144.2 us  load None -> None
+rep 2  new, on: ring buffer + inspection endpoint     1 clients      4000 cmd/s  p50   277.0 us  p95   483.2 us  load None -> None
+rep 2  new, on: ring buffer + inspection endpoint     4 clients      3507 cmd/s  p50  1060.5 us  p95  1939.9 us  load None -> None
+rep 2  new, on: ring buffer + inspection endpoint    16 clients      2596 cmd/s  p50  5907.6 us  p95  9274.2 us  load None -> None
+rep 2  new, on: JSONL file + inspection endpoint      1 clients      2415 cmd/s  p50   431.2 us  p95   761.8 us  load None -> None
+rep 2  new, on: JSONL file + inspection endpoint      4 clients      2338 cmd/s  p50  1673.2 us  p95  2835.2 us  load None -> None
+rep 2  new, on: JSONL file + inspection endpoint     16 clients      2376 cmd/s  p50  6595.7 us  p95  8506.6 us  load None -> None
+rep 3  original server.py (7ccdff6)                   1 clients      4739 cmd/s  p50   238.2 us  p95   435.6 us  load None -> None
+rep 3  original server.py (7ccdff6)                   4 clients      4303 cmd/s  p50   857.2 us  p95  1679.8 us  load None -> None
+rep 3  original server.py (7ccdff6)                  16 clients      3710 cmd/s  p50  3686.6 us  p95  9109.3 us  load None -> None
+rep 3  new, observability off                         1 clients      5571 cmd/s  p50   217.8 us  p95   354.1 us  load None -> None
+rep 3  new, observability off                         4 clients      4923 cmd/s  p50   785.0 us  p95  1364.2 us  load None -> None
+rep 3  new, observability off                        16 clients      4348 cmd/s  p50  3543.0 us  p95  5414.0 us  load None -> None
+rep 3  new, on: ring buffer + inspection endpoint     1 clients      1940 cmd/s  p50   385.9 us  p95  1329.8 us  load None -> None
+rep 3  new, on: ring buffer + inspection endpoint     4 clients      4096 cmd/s  p50   955.2 us  p95  1642.9 us  load None -> None
+rep 3  new, on: ring buffer + inspection endpoint    16 clients      3436 cmd/s  p50  4567.3 us  p95  6134.6 us  load None -> None
+rep 3  new, on: JSONL file + inspection endpoint      1 clients      2667 cmd/s  p50   440.0 us  p95   692.6 us  load None -> None
+rep 3  new, on: JSONL file + inspection endpoint      4 clients      2462 cmd/s  p50  1591.1 us  p95  2632.3 us  load None -> None
+rep 3  new, on: JSONL file + inspection endpoint     16 clients      2379 cmd/s  p50  6604.4 us  p95  8352.8 us  load None -> None
+rep 4  original server.py (7ccdff6)                   1 clients      4926 cmd/s  p50   229.4 us  p95   406.1 us  load None -> None
+rep 4  original server.py (7ccdff6)                   4 clients      4413 cmd/s  p50   866.9 us  p95  1581.1 us  load None -> None
+rep 4  original server.py (7ccdff6)                  16 clients      3793 cmd/s  p50  3737.9 us  p95  8318.6 us  load None -> None
+rep 4  new, observability off                         1 clients      5333 cmd/s  p50   235.0 us  p95   408.7 us  load None -> None
+rep 4  new, observability off                         4 clients      5387 cmd/s  p50   707.6 us  p95  1260.9 us  load None -> None
+rep 4  new, observability off                        16 clients      4405 cmd/s  p50  3570.4 us  p95  4862.8 us  load None -> None
+rep 4  new, on: ring buffer + inspection endpoint     1 clients      3876 cmd/s  p50   299.4 us  p95   485.7 us  load None -> None
+rep 4  new, on: ring buffer + inspection endpoint     4 clients      3656 cmd/s  p50  1049.8 us  p95  1787.3 us  load None -> None
+rep 4  new, on: ring buffer + inspection endpoint    16 clients      3282 cmd/s  p50  4525.8 us  p95  8015.1 us  load None -> None
+rep 4  new, on: JSONL file + inspection endpoint      1 clients      2370 cmd/s  p50   450.6 us  p95   780.1 us  load None -> None
+rep 4  new, on: JSONL file + inspection endpoint      4 clients      2485 cmd/s  p50  1573.7 us  p95  2577.5 us  load None -> None
+rep 4  new, on: JSONL file + inspection endpoint     16 clients      2368 cmd/s  p50  6621.2 us  p95  8523.1 us  load None -> None
+rep 5  original server.py (7ccdff6)                   1 clients      4926 cmd/s  p50   225.6 us  p95   395.0 us  load None -> None
+rep 5  original server.py (7ccdff6)                   4 clients      4413 cmd/s  p50   863.6 us  p95  1565.9 us  load None -> None
+rep 5  original server.py (7ccdff6)                  16 clients      3697 cmd/s  p50  3661.2 us  p95  9280.9 us  load None -> None
+rep 5  new, observability off                         1 clients      5571 cmd/s  p50   217.5 us  p95   361.4 us  load None -> None
+rep 5  new, observability off                         4 clients      4785 cmd/s  p50   794.1 us  p95  1425.6 us  load None -> None
+rep 5  new, observability off                        16 clients      4330 cmd/s  p50  3527.2 us  p95  5327.9 us  load None -> None
+rep 5  new, on: ring buffer + inspection endpoint     1 clients      3460 cmd/s  p50   357.5 us  p95   577.1 us  load None -> None
+rep 5  new, on: ring buffer + inspection endpoint     4 clients      3368 cmd/s  p50  1101.8 us  p95  2102.7 us  load None -> None
+rep 5  new, on: ring buffer + inspection endpoint    16 clients      3309 cmd/s  p50  4705.1 us  p95  6716.0 us  load None -> None
+rep 5  new, on: JSONL file + inspection endpoint      1 clients      2667 cmd/s  p50   438.0 us  p95   691.3 us  load None -> None
+rep 5  new, on: JSONL file + inspection endpoint      4 clients      2485 cmd/s  p50  1577.7 us  p95  2584.3 us  load None -> None
+rep 5  new, on: JSONL file + inspection endpoint     16 clients      2368 cmd/s  p50  6622.6 us  p95  8622.9 us  load None -> None
+| variant | clients | cmd/s (median) | cmd/s (min–max) | p50 (µs) | p95 (µs) | median vs off |
+|---|---:|---:|---:|---:|---:|---:|
+| original server.py (7ccdff6) | 1 | 4926 | 4739–4926 | 234.0 | 406.1 | -7.6% |
+| original server.py (7ccdff6) | 4 | 4413 | 4303–5333 | 857.2 | 1565.9 | -10.4% |
+| original server.py (7ccdff6) | 16 | 3793 | 3697–5251 | 3686.6 | 8318.6 | -13.9% |
+| new, observability off | 1 | 5333 | 4124–5571 | 233.8 | 408.7 | +0.0% |
+| new, observability off | 4 | 4923 | 3908–5818 | 785.0 | 1364.2 | +0.0% |
+| new, observability off | 16 | 4405 | 4330–5902 | 3527.2 | 5144.2 | +0.0% |
+| new, on: ring buffer + inspection endpoint | 1 | 3876 | 1940–4000 | 306.5 | 502.7 | -27.3% |
+| new, on: ring buffer + inspection endpoint | 4 | 3656 | 3368–4376 | 1049.8 | 1787.3 | -25.7% |
+| new, on: ring buffer + inspection endpoint | 16 | 3309 | 2596–3501 | 4567.3 | 6716.0 | -24.9% |
+| new, on: JSONL file + inspection endpoint | 1 | 2667 | 2370–2911 | 438.0 | 692.6 | -50.0% |
+| new, on: JSONL file + inspection endpoint | 4 | 2462 | 2338–2485 | 1591.1 | 2626.7 | -50.0% |
+| new, on: JSONL file + inspection endpoint | 16 | 2368 | 2322–2379 | 6621.2 | 8523.1 | -46.2% |
+
+CPython 3.11.18 on Windows-10-10.0.26300-SP0, 11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz (8 logical CPUs); none (standard library only)
