@@ -21,14 +21,14 @@ Think of the server as a front desk with one shared notebook.
 - Several people (clients) can talk to the desk at the same time. Each one gets their own clerk, which in the code is a thread.
 - The notebook has a single pen, which in the code is a lock. Only one clerk can read or change the notebook at a time, so two people can never overwrite each other's changes halfway through.
 - After every change, the clerk copies the whole notebook into a file (`store.txt`). When the server starts again, it reads that file back.
-- The desk serves at most 100 visitors at once by default. A clerk stays with their visitor until that visitor leaves, so when the desk is full, a new visitor waits in line until someone leaves.
+- The desk serves at most <!-- claim:kv.design.max_connections_default -->100 visitors at once by default. A clerk stays with their visitor until that visitor leaves, so when the desk is full, a new visitor waits in line until someone leaves.
 - At closing time (Ctrl+C), each clerk finishes the request they are working on and then hangs up, and the desk closes.
 
 Observability mode puts a window on the desk. You can watch who arrives, who is waiting for the pen and for how long, and when the notebook is copied to disk. You can look, but you can't change anything through it.
 
 ## Features
 
-- TCP server with one thread per connected client, capped at a configurable number of clients (100 by default)
+- TCP server with one thread per connected client, capped at a configurable number of clients (<!-- claim:kv.design.max_connections_default -->100 by default)
 - Commands: `SET`, `GET`, `REMOVE`, `PRINT` and `quit`. Command names are case-insensitive.
 - A shared in-memory dictionary protected by a re-entrant lock
 - Persistence to `store.txt`, which is UTF-8, rewritten after every change and loaded at startup
@@ -40,7 +40,7 @@ Observability mode puts a window on the desk. You can watch who arrives, who is 
 
 ## Requirements
 
-- Python 3.8 or newer. The code avoids language features and library functions added after 3.8. The test suite has been run on Python 3.14 (Linux, under WSL2) and Python 3.10 (Windows), but not on 3.8 itself.
+- Python 3.8 or newer. The code avoids language features and library functions added after 3.8. The test suite has been run on Python 3.14 (Linux, under WSL2) and Python 3.10 (Windows), and on CPython 3.11.18 on both Windows and Ubuntu under WSL2 for the measured results in this README, but not on 3.8 itself.
 - Nothing to install.
 
 ## Quick start
@@ -146,16 +146,16 @@ Rules and details:
 
 - `server.py` opens an IPv4 TCP socket with `SO_REUSEADDR`, binds it and calls `listen(10)`.
 - The main thread loops on `accept()` and starts one daemon thread per connection. The threads are named `client <ip>:<port>`.
-- A `threading.BoundedSemaphore` limits how many client threads exist at once (`--max-connections`, default 100). While every slot is taken, the server stops accepting. New clients wait in the operating system's listen backlog until a slot frees up; once that backlog is full, the OS may delay or refuse further connections.
+- A `threading.BoundedSemaphore` limits how many client threads exist at once (`--max-connections`, default <!-- claim:kv.design.max_connections_default -->100). While every slot is taken, the server stops accepting. New clients wait in the operating system's listen backlog until a slot frees up; once that backlog is full, the OS may delay or refuse further connections.
 
 ### Protocol and framing
 
-There is no message framing: **each `recv(1024)` the server performs is treated as one complete command**. That works well for interactive use, where you send one command and wait for its reply, but it has consequences:
+There is no message framing: **each <!-- claim:kv.design.recv_bytes -->`recv(1024)` the server performs is treated as one complete command**. That works well for interactive use, where you send one command and wait for its reply, but it has consequences:
 
-- A command longer than 1024 bytes is split into two commands.
+- A command longer than <!-- claim:kv.design.recv_bytes -->1024 bytes is split into two commands.
 - Two commands sent back to back, without waiting for a reply, can arrive in a single `recv()` and be rejected as one malformed command.
-- A reply longer than 1024 bytes, such as `PRINT` on a large store, arrives in more than one piece. `client.py` reads once per command, so the rest of the reply appears in front of the next one.
-- A multi-byte UTF-8 character cut in half at the 1024-byte boundary can't be decoded, and the server closes that connection.
+- A reply longer than <!-- claim:kv.design.client_recv_bytes -->1024 bytes, such as `PRINT` on a large store, arrives in more than one piece. `client.py` reads once per command, so the rest of the reply appears in front of the next one.
+- A multi-byte UTF-8 character cut in half at the <!-- claim:kv.design.recv_bytes -->1024-byte boundary can't be decoded, and the server closes that connection.
 
 ### Shared state and locking
 
@@ -178,8 +178,8 @@ The file-handling limitations are listed under [Known limitations](#known-limita
 Ctrl+C, or `Server.shutdown()` when the server is embedded in Python code, stops the accept loop and closes the listening socket. Then, for each connection that is still open:
 
 1. The server closes the *receiving* side of the connection. A command that is already running finishes, including its file write and its reply. Each handler then closes its connection and prints `Closing connection with (…): server is shutting down.`.
-2. After up to 1 second, the server fully closes any connection that is still open. This step is needed on Windows, where step 1 does not wake a connection that is idle and waiting for input, so shutting down there takes about a second when idle clients are connected. On Linux, idle connections close immediately in step 1.
-3. The server waits up to 5 seconds in total for these threads. Anything still running after that is ended when the process exits, because the threads are daemon threads.
+2. After up to <!-- claim:kv.design.shutdown_settle_s -->1 second, the server fully closes any connection that is still open. This step is needed on Windows, where step 1 does not wake a connection that is idle and waiting for input, so shutting down there takes about a second when idle clients are connected. On Linux, idle connections close immediately in step 1.
+3. The server waits up to <!-- claim:kv.design.shutdown_grace_s -->5 seconds in total for these threads. Anything still running after that is ended when the process exits, because the threads are daemon threads.
 
 On Windows, if a client has already sent its next command when the shutdown starts, Windows resets the connection and the reply to the running command may be lost. That command itself still completes.
 
@@ -196,16 +196,16 @@ The human-readable lines go to standard output.
 
 | Option | Environment variable | Default | Meaning |
 |---|---|---|---|
-| `--host HOST` | `KVS_HOST` | `0.0.0.0` | Address to listen on. Use `127.0.0.1` to accept local connections only. |
-| `--port PORT` | `KVS_PORT` | `3490` | TCP port. `0` lets the OS pick a free port. The startup line shows the real port, and it is also printed straight away on stderr as `Listening on HOST:PORT`, which helps when stdout is buffered. |
+| `--host HOST` | `KVS_HOST` | <!-- claim-waiver: IP address, not a quantity -->`0.0.0.0` | Address to listen on. Use `127.0.0.1` to accept local connections only. |
+| `--port PORT` | `KVS_PORT` | <!-- claim:kv.config.port -->`3490` | TCP port. `0` lets the OS pick a free port. The startup line shows the real port, and it is also printed straight away on stderr as `Listening on HOST:PORT`, which helps when stdout is buffered. |
 | `--store PATH` | `KVS_STORE` | `store.txt` | Persistence file, relative to the current directory. |
-| `--max-connections N` | `KVS_MAX_CONNECTIONS` | `100` | Clients served at the same time; more wait until one leaves. |
+| `--max-connections N` | `KVS_MAX_CONNECTIONS` | <!-- claim:kv.design.max_connections_default -->`100` | Clients served at the same time; more wait until one leaves. |
 | `--trace-jsonl PATH` | `KVS_TRACE_JSONL` | off | Observability: append every event as one JSON line (`-` = stderr). |
 | `--inspect-port PORT` | `KVS_INSPECT_PORT` | off | Observability: serve the read-only inspection endpoint (`0` = free port). |
-| `--inspect-host HOST` | `KVS_INSPECT_HOST` | `127.0.0.1` | Observability: address of the inspection endpoint. |
+| `--inspect-host HOST` | `KVS_INSPECT_HOST` | <!-- claim-waiver: IP address, not a quantity -->`127.0.0.1` | Observability: address of the inspection endpoint. |
 | `--redact-values` | `KVS_REDACT_VALUES=1` | off | Observability: hide values (not keys) in traces and inspection output. |
-| `--trace-max-chars N` | | `256` | Observability: cut keys, values and messages to N characters. |
-| `--trace-buffer N` | | `4096` | Observability: number of recent events kept for `/events`. |
+| `--trace-max-chars N` | | <!-- claim:kv.config.trace_max_chars -->`256` | Observability: cut keys, values and messages to N characters. |
+| `--trace-buffer N` | | <!-- claim:kv.config.trace_buffer -->`4096` | Observability: number of recent events kept for `/events`. |
 
 `client.py` has no options. To connect it somewhere else, change `Client()` at the bottom of the file, for example to `Client(port=4000)`.
 
@@ -262,28 +262,32 @@ srv.shutdown()                     # stops the server from any thread
 
 ### What a trace looks like
 
-These are the real events for one `SET username brian`, from `trace.jsonl`. The `ts_ns`, `mono_ns`, `thread` and `thread_id` fields are cut out here with `…`:
+These are the events for one `SET username brian` sent to a fresh server with an empty store. They were captured by `bench/run_bench.py` on Ubuntu 26.04 under WSL2 (CPython 3.11.18, commit `448c88e`) and are kept unedited in [`bench/results/2026-11-06-448c88e/ubuntu-wsl2/raw/example-trace.jsonl`](bench/results/2026-11-06-448c88e/ubuntu-wsl2/raw/example-trace.jsonl). The `ts_ns`, `mono_ns`, `thread` and `thread_id` fields are cut out here with `…`:
 
+<!-- claim-waiver-begin: captured trace lines from bench/results/2026-11-06-448c88e/ubuntu-wsl2/raw/example-trace.jsonl (fields cut with …), not hand-written; the byte counts and timings are tagged claims in the list below -->
 ```text
 {"v":1,"seq":6,…,"type":"conn.recv",…,"conn":1,"cmd":1,"data":{"bytes":18}}
-{"v":1,"seq":7,…,"type":"cmd.decode",…,"data":{"ok":true,"chars":18,"error_type":null}}
-{"v":1,"seq":8,…,"type":"cmd.parse",…,"data":{"verb":"SET","verb_text":{…},"argc":2,"valid":true,"reason":null,"key":{"text":"username",…},"value":{"text":"brian",…}}}
-{"v":1,"seq":9,…,"type":"lock.wait_start",…,"data":{"lock":"store","waiting":1,"owner_thread":null,"owner_thread_id":null}}
-{"v":1,"seq":10,…,"type":"lock.acquired",…,"data":{"lock":"store","wait_ns":1743,"contended":false,"waiting":0}}
-{"v":1,"seq":11,…,"type":"store.mutation",…,"data":{"op":"set","key":{"text":"username",…},"value":{"text":"brian",…},"existed":false,"keys":1,"generation":1}}
-{"v":1,"seq":12,…,"type":"store.save_start",…,"data":{"path":"store.txt","generation":1,"keys":1}}
-{"v":1,"seq":13,…,"type":"store.save_end",…,"data":{"path":"store.txt","ok":true,"bytes":15,"mtime_ns":1792788259931507991,"duration_ns":600415,"generation":1,"error_type":null,"error":null}}
-{"v":1,"seq":14,…,"type":"lock.released",…,"data":{"lock":"store","hold_ns":750230}}
-{"v":1,"seq":15,…,"type":"conn.send",…,"data":{"bytes":40,"send_ns":275364,"latency_ns":1152239}}
-{"v":1,"seq":16,…,"type":"cmd.end",…,"data":{"verb":"SET","outcome":"ok","duration_ns":1152239}}
+{"v":1,"seq":7,…,"type":"cmd.decode",…,"conn":1,"cmd":1,"data":{"ok":true,"chars":18,"error_type":null}}
+{"v":1,"seq":8,…,"type":"cmd.parse",…,"conn":1,"cmd":1,"data":{"verb":"SET","verb_text":{…},"argc":2,"valid":true,"reason":null,"key":{"text":"username",…},"value":{"text":"brian",…}}}
+{"v":1,"seq":9,…,"type":"lock.wait_start",…,"conn":1,"cmd":1,"data":{"lock":"store","waiting":1,"owner_thread":null,"owner_thread_id":null}}
+{"v":1,"seq":10,…,"type":"lock.acquired",…,"conn":1,"cmd":1,"data":{"lock":"store","wait_ns":2100,"contended":false,"waiting":0}}
+{"v":1,"seq":11,…,"type":"store.mutation",…,"conn":1,"cmd":1,"data":{"op":"set","key":{"text":"username",…},"value":{"text":"brian",…},"existed":false,"keys":1,"generation":1}}
+{"v":1,"seq":12,…,"type":"store.save_start",…,"conn":1,"cmd":1,"data":{"path":"store.txt","generation":1,"keys":1}}
+{"v":1,"seq":13,…,"type":"store.save_end",…,"conn":1,"cmd":1,"data":{"path":"store.txt","ok":true,"bytes":15,"mtime_ns":1793979155352732718,"duration_ns":785074,"generation":1,"error_type":null,"error":null}}
+{"v":1,"seq":14,…,"type":"lock.released",…,"conn":1,"cmd":1,"data":{"lock":"store","hold_ns":940283}}
+{"v":1,"seq":15,…,"type":"conn.send",…,"conn":1,"cmd":1,"data":{"bytes":40,"send_ns":412963,"latency_ns":1520357}}
+{"v":1,"seq":16,…,"type":"cmd.end",…,"conn":1,"cmd":1,"data":{"verb":"SET","outcome":"ok","duration_ns":1520357}}
 ```
+<!-- claim-waiver-end -->
 
-Read from top to bottom, this says:
-1. 18 bytes arrived and decoded as a valid `SET`.
-2. The thread got the lock almost immediately (1.7 µs, uncontended).
-3. It added a new key, then rewrote `store.txt` (15 bytes, about 0.6 ms).
-4. It released the lock after holding it for about 0.75 ms.
-5. It sent a 40-byte reply about 1.15 ms after the command arrived.
+Read from top to bottom, this says (one traced command, so each duration is a single observation, not an average):
+1. <!-- claim:kv.trace.bytes_in -->18 bytes arrived and decoded as a valid `SET`.
+2. The thread got the lock almost immediately: the trace records a wait of <!-- claim:kv.trace.lock_wait_ns.ubuntu-wsl2 -->2,100 ns, uncontended.
+3. It added a new key, then rewrote `store.txt` (<!-- claim:kv.trace.store_bytes -->15 bytes), which the trace times at <!-- claim:kv.trace.save_duration_ns.ubuntu-wsl2 -->785,074 ns.
+4. The trace shows it releasing the lock after holding it for <!-- claim:kv.trace.hold_ns.ubuntu-wsl2 -->940,283 ns.
+5. It sent a <!-- claim:kv.trace.reply_bytes -->40-byte reply; in the trace that is <!-- claim:kv.trace.reply_latency_ns.ubuntu-wsl2 -->1,520,357 ns after the command arrived.
+
+The server was recording this trace while it ran, so these durations describe a traced (instrumented) server; see [What observability costs](#what-observability-costs). On native Windows the same capture shows each of these durations as 0: there CPython 3.11 takes `time.monotonic_ns` from `GetTickCount64`, which advances in steps of <!-- claim:kv.meta.monotonic_resolution_ns.windows-native -->15,625,000 ns, so anything shorter reads as 0.
 
 ### Inspection endpoint
 
@@ -429,7 +433,7 @@ A connection starts with `conn.accept` (on the accepting thread) and `conn.open`
 | `peer_host` | str | actual | — | client address |
 | `peer_port` | int | actual | — | client port |
 
-**`conn.recv`** (connection): recv(1024) returned data; starts a command.
+**`conn.recv`** (connection): <!-- claim:kv.design.recv_bytes -->recv(1024) returned data; starts a command.
 
 | `data` field | Type | Kind | Unit / clock | Meaning |
 |---|---|---|---|---|
@@ -563,7 +567,7 @@ No `data` fields.
 | `outcome` | str | actual | — | ok, not_found, rejected, decode_error or error |
 | `duration_ns` | int | measured | ns, monotonic clock | from recv() returning to this event |
 
-**`conn.disconnect`** (connection): recv() returned 0 bytes, or failed because stop() closed the connection.
+**`conn.disconnect`** (connection): recv() returned <!-- claim-waiver: the recv() return value that means end of stream, not a measurement -->0 bytes, or failed because stop() closed the connection.
 
 | `data` field | Type | Kind | Unit / clock | Meaning |
 |---|---|---|---|---|
@@ -607,28 +611,83 @@ No `data` fields.
   - The event buffer and every queue have fixed sizes.
   - Keys, values and messages in events are cut to `--trace-max-chars`.
   - `/state` returns at most `limit` entries.
-  - Error counters keep at most 64 exception names.
+  - Error counters keep at most <!-- claim:kv.design.max_error_types -->64 exception names.
 - **Isolation.** All observability state belongs to one `Observer` object, and an observer can be attached to only one server. Several servers in one process never mix events or counters.
 - **Security.** The endpoint binds to `127.0.0.1` by default and rejects requests whose `Host` header isn't a localhost name, as a protection against DNS rebinding. It has no authentication, encryption or CORS headers. If you bind it to another address, anyone who can reach that address can read every key, and every value unless `--redact-values` is set.
 - **Redaction** hides values only. Keys and value lengths stay visible, and the server's normal stdout lines still contain values.
 
 ### What observability costs
 
-These measurements come from `bench/loadtest.py`, run on one laptop: an Intel Core i7-1185G7, Windows 11 with WSL2, Python 3.14.4. Each client sent 2,000 commands, and every combination was repeated 3 times. The table shows the median throughput, with the lowest and highest of the three runs in brackets. Other programs were running on the machine at the same time, so treat these as rough indications for this setup, not as general performance figures.
+These measurements come from `bench/run_bench.py`, which runs the `bench/loadtest.py` matrix on one laptop (Intel Core i7-1185G7, on AC power, Windows power mode Balanced) in two environments, one after the other: Windows 11 natively, and Ubuntu 26.04 under WSL2. Both used CPython 3.11.18 and the code at commit `448c88e`. Every run started a fresh server on 127.0.0.1, and each client, in its own process, sent <!-- claim-waiver: workload parameter (loadtest.py --commands), not a measurement -->2,000 measured commands after <!-- claim-waiver: workload parameter (loadtest.py --warmup), not a measurement -->200 warm-up commands. Every combination of server and client count ran 5 times, interleaved. The raw per-command data, `meta.json` and `summary.json` are in [`bench/results/2026-11-06-448c88e/`](bench/results/2026-11-06-448c88e/). These are measurements of this laptop and setup, not general performance figures.
 
-| Clients | Original server | This version, observability off | Event buffer + inspection endpoint | JSONL file + inspection endpoint |
-|---:|---:|---:|---:|---:|
-| 1 | 8,800 (3,367–10,488) | 8,976 (6,815–9,188) | 8,014 (4,771–8,251) | 2,877 (2,051–3,317) |
-| 4 | 5,768 (3,295–6,151) | 5,903 (4,576–6,368) | 4,751 (4,237–5,023) | 2,511 (957–2,517) |
-| 16 | 6,214 (4,466–6,854) | 6,110 (5,850–6,776) | 4,010 (2,638–4,115) | 1,774 (1,257–1,921) |
+To repeat them, run this with Python 3.11 in each environment. It refuses to run on a modified checkout and writes `bench/results/<date>-<commit>/<environment>/`:
 
-<sub>Commands per second. "Original server" is `server.py` from commit `7ccdff6`, before this work.</sub>
+```bash
+python bench/run_bench.py --env windows-native   # on Windows
+python bench/run_bench.py --env ubuntu-wsl2      # on Ubuntu under WSL2
+```
+
+<!-- bench-methodology:begin -->
+- **Warm-up:** before measuring, the run fills the <!-- claim-waiver: workload parameter (loadtest.py --keys), not a measurement -->100 keys, and every client sends its warm-up commands, which aren't timed, before all clients start together at a barrier. Each run starts a fresh server with an empty store.
+- **Timer:** each command's latency uses `time.perf_counter_ns`, with <!-- claim:kv.timer.resolution_ns.ubuntu-wsl2 -->1 ns resolution on Ubuntu and <!-- claim:kv.timer.resolution_ns.windows-native -->100 ns on Windows. Throughput is a run's measured commands divided by its wall time, which `loadtest.py` takes from `time.monotonic()`. That clock has <!-- claim:kv.meta.monotonic_resolution_ns.ubuntu-wsl2 -->1 ns resolution on Ubuntu, but on Windows CPython 3.11 it advances in steps of <!-- claim:kv.meta.monotonic_resolution_ns.windows-native -->15,625,000 ns. A 1-client run with observability off lasts under half a second there, so its throughput is only resolved to within a few percent, and some runs show identical values.
+- **Repetitions:** <!-- claim:kv.off.c1.cmd_per_s.ubuntu-wsl2#n -->5 runs of every server at every client count, interleaved (repeat, then server, then client count). A table cell is the median of the 5 runs, with the lowest and highest run in brackets. A ratio divides a server's commands per second by observability off's in the same repeat, then takes the median of the 5 ratios.
+- **Outliers:** no command or run was dropped. A run would be marked invalid, and kept out of the statistics, if a precondition failed (CPU or load gate, a failing test), and none was.
+- **Noise control:** AC power, Windows power mode Balanced, other applications closed, one environment at a time, servers on 127.0.0.1 only. On Windows the runner waited until CPU use was below <!-- claim-waiver: threshold setting of the runner's quiet gate (--max-busy-pct), not a measurement -->10% before the matrix; it was <!-- claim:kv.meta.cpu_busy_matrix.windows-native -->6.64% when the matrix started. On Ubuntu, `loadtest.py --max-load` made each run wait for a quiet WSL VM; its 1-minute load average, which can't see activity on the Windows host, was <!-- claim:kv.meta.loadavg_start.ubuntu-wsl2 -->0 at the start and <!-- claim:kv.meta.loadavg_end.ubuntu-wsl2 -->1.43 at the end.
+<!-- bench-methodology:end -->
+
+How to read the tables: the first table of each environment gives commands per second. The second divides each server's commands per second by observability off's (a ratio of 1 would mean no change). "Original server" is `server.py` from commit `7ccdff6`, before this work. The event buffer and JSONL rows are instrumented builds, so their ratios compare an instrumented build with the uninstrumented one.
+
+**Ubuntu 26.04 under WSL2**
+
+<!-- claims-table:begin id=kv.observability.ubuntu-wsl2 -->
+| Server (commands per second) | 1 client | 4 clients | 16 clients |
+|---|---:|---:|---:|
+| Original server (`7ccdff6`) | 12,403 (10,806–12,491) | 9,795 (8,696–10,755) | 7,833 (7,672–10,660) |
+| This version, observability off | 10,711 (10,489–12,074) | 8,288 (8,167–10,439) | 7,738 (7,590–9,018) |
+| Event buffer + inspection endpoint (instrumented) | 8,167 (6,488–8,271) | 5,089 (4,992–5,996) | 4,686 (4,657–5,708) |
+| JSONL file + inspection endpoint (instrumented) | 3,687 (3,203–3,711) | 2,226 (2,086–2,593) | 2,035 (2,007–2,044) |
+<!-- claims-table:end -->
+
+<!-- claims-table:begin id=kv.relative.ubuntu-wsl2 -->
+| Throughput relative to observability off | 1 client | 4 clients | 16 clients |
+|---|---:|---:|---:|
+| Original server (`7ccdff6`) ÷ off | 1.14× (1.03–1.17×) | 1.10× (1.03–1.27×) | 1.01× (0.99–1.18×) |
+| Event buffer + inspection endpoint (instrumented) ÷ off | 0.76× (0.54–0.78×) | 0.61× (0.57–0.62×) | 0.61× (0.60–0.63×) |
+| JSONL file + inspection endpoint (instrumented) ÷ off | 0.32× (0.29–0.35×) | 0.26× (0.25–0.27×) | 0.26× (0.22–0.27×) |
+<!-- claims-table:end -->
+
+**Windows 11, native**
+
+<!-- claims-table:begin id=kv.observability.windows-native -->
+| Server (commands per second) | 1 client | 4 clients | 16 clients |
+|---|---:|---:|---:|
+| Original server (`7ccdff6`) | 4,926 (4,739–4,926) | 4,413 (4,303–5,333) | 3,793 (3,697–5,251) |
+| This version, observability off | 5,333 (4,124–5,571) | 4,923 (3,908–5,818) | 4,405 (4,330–5,902) |
+| Event buffer + inspection endpoint (instrumented) | 3,876 (1,940–4,000) | 3,656 (3,368–4,376) | 3,309 (2,596–3,501) |
+| JSONL file + inspection endpoint (instrumented) | 2,667 (2,370–2,911) | 2,462 (2,338–2,485) | 2,368 (2,322–2,379) |
+<!-- claims-table:end -->
+
+<!-- claims-table:begin id=kv.relative.windows-native -->
+| Throughput relative to observability off | 1 client | 4 clients | 16 clients |
+|---|---:|---:|---:|
+| Original server (`7ccdff6`) ÷ off | 0.92× (0.85–1.19×) | 0.92× (0.82–1.17×) | 0.86× (0.85–0.89×) |
+| Event buffer + inspection endpoint (instrumented) ÷ off | 0.73× (0.35–0.97×) | 0.75× (0.68–0.90×) | 0.75× (0.58–0.79×) |
+| JSONL file + inspection endpoint (instrumented) ÷ off | 0.48× (0.44–0.59×) | 0.50× (0.42–0.60×) | 0.54× (0.39–0.55×) |
+<!-- claims-table:end -->
 
 What this shows:
 
-- **Off.** With observability off, this version and the original were within the run-to-run noise of each other. A separate in-process comparison, without the network, measured about 0.1–0.2 microseconds of extra work per command.
-- **Event buffer.** The in-memory event buffer that the inspection endpoint reads lowered median throughput by about 11%, 20% and 34% at 1, 4 and 16 clients. A likely reason the cost grows with more clients is that several events are recorded while the store lock is held, which lengthens the time other clients wait for it.
-- **JSONL file.** Writing every event to a JSONL file cost the most: 58–71% lower median throughput. The likely reason is that encoding JSON competes with request handling for Python's global interpreter lock. To watch a running server, polling the inspection endpoint is the cheaper option.
+- **Off.** With observability off, this version isn't consistently faster or slower than the original. On Ubuntu the original was faster at 1 and 4 clients (its ratio was above 1 in every repeat) and within the run-to-run range at 16 clients. On Windows this version was faster at 16 clients (the ratio was below 1 in every repeat) and within the range at 1 and 4 clients. Besides the observability checks, this version also adds the connection limit and the other fixes, and the harness doesn't separate their costs, so the Ubuntu difference has no measured cause.
+- **Event buffer (instrumented).** Keeping the in-memory event buffer that the inspection endpoint reads lowered median throughput at every client count in both environments. On Ubuntu the median cost was larger with 4 and 16 clients than with 1. A possible reason, not verified, is that several events are recorded while the store lock is held, which lengthens other clients' waits. On Windows the medians were close at every client count, with wide run-to-run ranges.
+- **JSONL file (instrumented).** Writing every event to a JSONL file cost the most: its median throughput was the lowest of the four servers at every client count, roughly a quarter to a third of observability off's on Ubuntu and about half on Windows. A likely reason, not verified, is that encoding JSON competes with request handling for Python's global interpreter lock. To watch a running server, polling the inspection endpoint is the cheaper option.
+
+**Windows and Ubuntu.** A difference is stated only where the two environments' lowest-to-highest ranges don't overlap. With observability off, the server handled more commands per second on Ubuntu under WSL2 than on native Windows at every client count, and the slowest Ubuntu run beat the fastest Windows run each time:
+
+- 1 client: <!-- claim:kv.cmp.off.c1.cmd_per_s -->faster on Ubuntu on WSL2 by ~2.01×, medians of 5 runs each.
+- 4 clients: <!-- claim:kv.cmp.off.c4.cmd_per_s -->faster on Ubuntu on WSL2 by ~1.68×, medians of 5 runs each.
+- 16 clients: <!-- claim:kv.cmp.off.c16.cmd_per_s -->faster on Ubuntu on WSL2 by ~1.76×, medians of 5 runs each.
+
+Why is a hypothesis, not verified: every `SET` rewrites the whole `store.txt`, and the load test alternates `SET` and `GET`. On Windows that rewrite goes to NTFS, and on Ubuntu to ext4 inside the WSL2 virtual disk. The raw per-command data fits this: in the 1-client runs, `GET` commands, which don't touch the file, were no slower on Windows, while `SET` commands were much slower. No run with the store on another file system was made to confirm it.
 
 ## Testing
 
@@ -636,7 +695,7 @@ What this shows:
 python -m unittest discover -s tests -v
 ```
 
-The suite has 54 tests and uses only the standard library. They cover:
+The suite has <!-- claim:kv.tests.total.ubuntu-wsl2 -->54 tests and uses only the standard library. They cover:
 
 - **Golden protocol tests.** These replay a session recorded from the original version of the server. It includes errors, mixed case, extra whitespace, `quit`, `PRINT` on an empty and a filled store, and bytes that aren't valid UTF-8. The tests require identical replies, stdout lines and `store.txt` contents, with observability both off and on.
 - **Tracing.** Every command type produces a complete, correctly ordered sequence of events, and the recorded changes match what ends up in `store.txt`.
@@ -645,13 +704,13 @@ The suite has 54 tests and uses only the standard library. They cover:
 - **Isolation.** Two servers in one process share no observability state.
 - **The fixes.** UTF-8 storage regardless of locale, reading older files, reporting malformed lines, the connection limit, graceful shutdown, and the client's handling of empty lines.
 
-On Linux (Python 3.14) all 54 pass. On Windows (Python 3.10), 46 pass and 8 are skipped because they rely on POSIX features (signals, FIFOs, file permissions, the C locale).
+In the measured session on CPython 3.11.18, all <!-- claim:kv.tests.passed.ubuntu-wsl2 -->54 pass on Ubuntu under WSL2. On Windows, <!-- claim:kv.tests.passed.windows-native -->46 pass and <!-- claim:kv.tests.skipped.windows-native -->8 are skipped because they rely on POSIX features (signals, FIFOs, file permissions, the C locale). Both results are in `bench/results/2026-11-06-448c88e/<environment>/raw/tests.txt`.
 
 ## Load testing
 
-`bench/loadtest.py` measures throughput and latency the way `client.py` talks to the server: one send and one 1024-byte receive per command.
+`bench/loadtest.py` measures throughput and latency the way `client.py` talks to the server: one send and one <!-- claim:kv.design.client_recv_bytes -->1024-byte receive per command.
 - Each simulated client runs in its own process.
-- Commands alternate `SET` and `GET` over 100 keys that are filled in before measuring.
+- Commands alternate `SET` and `GET` over <!-- claim-waiver: workload parameter (loadtest.py --keys), not a measurement -->100 keys that are filled in before measuring.
 
 ```bash
 # Load a server that is already running
@@ -659,10 +718,10 @@ python bench/loadtest.py run --port 3490 --clients 4
 
 # Start each variant itself and compare: the original server.py from git (commit 7ccdff6),
 # this version with observability off, and with it on
-python bench/loadtest.py matrix --baseline-ref 7ccdff6 --repeat 3
+python bench/loadtest.py matrix --baseline-ref 7ccdff6 --repeat 5
 ```
 
-Results depend heavily on the machine and on what else it is doing. The script records the load average for each run. `--max-load` makes it wait for a quiet machine, and `--variants` runs only some variants.
+Results depend heavily on the machine and on what else it is doing. The script records the load average for each run. `--max-load` makes it wait for a quiet machine, and `--variants` runs only some variants. `bench/run_bench.py` runs the tests, this matrix and the example trace, and records the results as described under [What observability costs](#what-observability-costs).
 
 ## Project structure
 
@@ -673,20 +732,23 @@ key-value-storage/
 ├── observability.py   # optional tracing, inspection endpoint and diagnostics
 ├── tests/             # unittest suite (standard library only)
 ├── bench/loadtest.py  # load generator and before/after comparison
+├── bench/run_bench.py # one command per environment: tests, load-test matrix, example trace
+├── bench/benchmeta.py # machine, OS, Python and timer metadata for the results
+├── bench/results/     # raw per-command data, meta.json and summary.json of each measured session
 ├── store.txt          # created at runtime in the working directory
 └── README.md
 ```
 
 ## Known limitations
 
-- **No message framing.** One `recv(1024)` is one command, with the consequences listed under [Protocol and framing](#protocol-and-framing).
+- **No message framing.** One <!-- claim:kv.design.recv_bytes -->`recv(1024)` is one command, with the consequences listed under [Protocol and framing](#protocol-and-framing).
 - **The save isn't atomic.** `store.txt` is truncated and then rewritten in place. A crash or power loss during a write can leave it incomplete, and another program reading it at that moment can see a partial file. There is no `fsync`.
 - **Failed saves are invisible to clients.** If writing `store.txt` fails, the server prints `[ERROR] Error saving data: …`, but the client still receives `Added key …` and the change exists only in memory.
 - **A failed load can lose data.** If `store.txt` can't be fully read at startup, the server prints `Error loading data: …` and keeps only what it decoded before the error. The file is decoded in blocks of a few kilobytes, so for a small file that can be nothing. The next change then overwrites the file with what is in memory, so the rest is lost.
 - **Single-word keys and values only.**
 - **stdout is buffered when redirected and depends on the locale's encoding.** See [Logging](#logging).
 - **No authentication or encryption** on either the store port or the inspection endpoint.
-- **`client.py` is minimal.** It always connects to `localhost:3490` and reads one 1024-byte chunk per reply.
+- **`client.py` is minimal.** It always connects to `localhost:3490` and reads one <!-- claim:kv.design.client_recv_bytes -->1024-byte chunk per reply.
 
 ## Troubleshooting
 
@@ -698,7 +760,7 @@ key-value-storage/
 
 **I redirected the output to a file and it is empty.** stdout is buffered when redirected. Use `python -u server.py > server.log`.
 
-**A large `PRINT` looks cut off, and the rest shows up after the next command.** That's the 1024-byte framing limit described under [Protocol and framing](#protocol-and-framing).
+**A large `PRINT` looks cut off, and the rest shows up after the next command.** That's the <!-- claim:kv.design.client_recv_bytes -->1024-byte framing limit described under [Protocol and framing](#protocol-and-framing).
 
 ## Possible future improvements
 
