@@ -1,0 +1,1687 @@
+{
+ "derived": {
+  "jsonl_vs_off_c1": {
+   "build": "instrumented:kv-observability-jsonl",
+   "clients": 1,
+   "definition": "cmd/s of jsonl / cmd/s of off at 1 client(s), paired by repeat (the two runs of one repeat ran back to back); compares an instrumented build with an uninstrumented one",
+   "denominator": "off",
+   "max": 0.5857487922475654,
+   "measure": "derived_ratio",
+   "median": 0.47866666666232044,
+   "min": 0.44431279620227976,
+   "n": 5,
+   "numerator": "jsonl",
+   "p25": 0.47866666666232044,
+   "p75": 0.5676855895355601,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.5676855895355601,
+    0.5857487922475654,
+    0.47866666666232044,
+    0.44431279620227976,
+    0.47866666666232044
+   ]
+  },
+  "jsonl_vs_off_c16": {
+   "build": "instrumented:kv-observability-jsonl",
+   "clients": 16,
+   "definition": "cmd/s of jsonl / cmd/s of off at 16 client(s), paired by repeat (the two runs of one repeat ran back to back); compares an instrumented build with an uninstrumented one",
+   "denominator": "off",
+   "max": 0.5470898684316078,
+   "measure": "derived_ratio",
+   "median": 0.5375508694048435,
+   "min": 0.39344024381577253,
+   "n": 5,
+   "numerator": "jsonl",
+   "p25": 0.5335956641175306,
+   "p75": 0.5467998520167466,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.39344024381577253,
+    0.5335956641175306,
+    0.5470898684316078,
+    0.5375508694048435,
+    0.5467998520167466
+   ]
+  },
+  "jsonl_vs_off_c4": {
+   "build": "instrumented:kv-observability-jsonl",
+   "clients": 4,
+   "definition": "cmd/s of jsonl / cmd/s of off at 4 client(s), paired by repeat (the two runs of one repeat ran back to back); compares an instrumented build with an uninstrumented one",
+   "denominator": "off",
+   "max": 0.5981881940324748,
+   "measure": "derived_ratio",
+   "median": 0.5,
+   "min": 0.4211332312423809,
+   "n": 5,
+   "numerator": "jsonl",
+   "p25": 0.4613233923518335,
+   "p75": 0.5194159676872375,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.4211332312423809,
+    0.5981881940324748,
+    0.5,
+    0.4613233923518335,
+    0.5194159676872375
+   ]
+  },
+  "original_vs_off_c1": {
+   "build": "uninstrumented",
+   "clients": 1,
+   "definition": "cmd/s of original / cmd/s of off at 1 client(s), paired by repeat (the two runs of one repeat ran back to back)",
+   "denominator": "off",
+   "max": 1.19164619159278,
+   "measure": "derived_ratio",
+   "median": 0.9236453202240584,
+   "min": 0.8507109004835759,
+   "n": 5,
+   "numerator": "original",
+   "p25": 0.8842364532198032,
+   "p75": 0.9605911330674292,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.9605911330674292,
+    1.19164619159278,
+    0.8507109004835759,
+    0.9236453202240584,
+    0.8842364532198032
+   ]
+  },
+  "original_vs_off_c16": {
+   "build": "uninstrumented",
+   "clients": 16,
+   "definition": "cmd/s of original / cmd/s of off at 16 client(s), paired by repeat (the two runs of one repeat ran back to back)",
+   "denominator": "off",
+   "max": 0.8897276009205651,
+   "measure": "derived_ratio",
+   "median": 0.8581492537319827,
+   "min": 0.853333333335088,
+   "n": 5,
+   "numerator": "original",
+   "p25": 0.853743068394652,
+   "p75": 0.8610880644790042,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.8897276009205651,
+    0.8581492537319827,
+    0.853333333335088,
+    0.8610880644790042,
+    0.853743068394652
+   ]
+  },
+  "original_vs_off_c4": {
+   "build": "uninstrumented",
+   "clients": 4,
+   "definition": "cmd/s of original / cmd/s of off at 4 client(s), paired by repeat (the two runs of one repeat ran back to back)",
+   "denominator": "off",
+   "max": 1.169714285709363,
+   "measure": "derived_ratio",
+   "median": 0.9166666666666666,
+   "min": 0.8190843905076758,
+   "n": 5,
+   "numerator": "original",
+   "p25": 0.8741258741274069,
+   "p75": 0.9222283507977517,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.9166666666666666,
+    1.169714285709363,
+    0.8741258741274069,
+    0.8190843905076758,
+    0.9222283507977517
+   ]
+  },
+  "ring_vs_off_c1": {
+   "build": "instrumented:kv-observability-ring",
+   "clients": 1,
+   "definition": "cmd/s of ring / cmd/s of off at 1 client(s), paired by repeat (the two runs of one repeat ran back to back); compares an instrumented build with an uninstrumented one",
+   "denominator": "off",
+   "max": 0.9699999999720603,
+   "measure": "derived_ratio",
+   "median": 0.7267441860419207,
+   "min": 0.3482056256070563,
+   "n": 5,
+   "numerator": "ring",
+   "p25": 0.6211072664210894,
+   "p75": 0.7558139535533008,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.7558139535533008,
+    0.9699999999720603,
+    0.3482056256070563,
+    0.7267441860419207,
+    0.6211072664210894
+   ]
+  },
+  "ring_vs_off_c16": {
+   "build": "instrumented:kv-observability-ring",
+   "clients": 16,
+   "definition": "cmd/s of ring / cmd/s of off at 16 client(s), paired by repeat (the two runs of one repeat ran back to back); compares an instrumented build with an uninstrumented one",
+   "denominator": "off",
+   "max": 0.7903780068740229,
+   "measure": "derived_ratio",
+   "median": 0.745128205129638,
+   "min": 0.5829818299805591,
+   "n": 5,
+   "numerator": "ring",
+   "p25": 0.5931517339479877,
+   "p75": 0.7640612076117196,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.5931517339479877,
+    0.5829818299805591,
+    0.7903780068740229,
+    0.745128205129638,
+    0.7640612076117196
+   ]
+  },
+  "ring_vs_off_c4": {
+   "build": "instrumented:kv-observability-ring",
+   "clients": 4,
+   "definition": "cmd/s of ring / cmd/s of off at 4 client(s), paired by repeat (the two runs of one repeat ran back to back); compares an instrumented build with an uninstrumented one",
+   "denominator": "off",
+   "max": 0.8974134151582303,
+   "measure": "derived_ratio",
+   "median": 0.7521881838038951,
+   "min": 0.6787020109641977,
+   "n": 5,
+   "numerator": "ring",
+   "p25": 0.7039999999963727,
+   "p75": 0.83205325140442,
+   "repeats": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "unit": "ratio",
+   "values": [
+    0.7521881838038951,
+    0.8974134151582303,
+    0.83205325140442,
+    0.6787020109641977,
+    0.7039999999963727
+   ]
+  }
+ },
+ "environment_id": "windows-native",
+ "example_trace": {
+  "build": "instrumented:kv-observability-jsonl",
+  "bytes_in": 18,
+  "clock": {
+   "name": "time.monotonic_ns (GetTickCount64())",
+   "resolution_ns": 15625000.0,
+   "used_by": "observability.py event durations (wait_ns, hold_ns, duration_ns, latency_ns, send_ns)"
+  },
+  "cmd": 1,
+  "command": "SET username brian",
+  "conn": 1,
+  "file": "raw/example-trace.jsonl",
+  "hold_ns": {
+   "build": "instrumented:kv-observability-jsonl",
+   "definition": "store lock held, from acquisition to the start of release",
+   "event": "lock.released",
+   "field": "hold_ns",
+   "max": 0,
+   "measure": "request_wall_time",
+   "median": 0,
+   "min": 0,
+   "n": 1,
+   "p25": 0,
+   "p75": 0,
+   "resolution_note": "below one tick of the trace clock (1.5625e+07 ns): start and end fell in the same tick, so this is not a resolved duration (a 0 means under one tick, not zero)",
+   "resolution_ns": 15625000.0,
+   "seq": 14,
+   "unit": "ns",
+   "values": [
+    0
+   ]
+  },
+  "lock_wait_ns": {
+   "build": "instrumented:kv-observability-jsonl",
+   "definition": "time inside the store lock's underlying acquire",
+   "event": "lock.acquired",
+   "field": "wait_ns",
+   "max": 0,
+   "measure": "request_wall_time",
+   "median": 0,
+   "min": 0,
+   "n": 1,
+   "p25": 0,
+   "p75": 0,
+   "resolution_note": "below one tick of the trace clock (1.5625e+07 ns): start and end fell in the same tick, so this is not a resolved duration (a 0 means under one tick, not zero)",
+   "resolution_ns": 15625000.0,
+   "seq": 10,
+   "unit": "ns",
+   "values": [
+    0
+   ]
+  },
+  "note": "one command on a fresh server with an empty store; timings are a single observation, not a distribution, and come from the JSONL build (instrumented:kv-observability-jsonl). Byte counts are exact.",
+  "outcome": "ok",
+  "reply_bytes": 40,
+  "reply_latency_ns": {
+   "build": "instrumented:kv-observability-jsonl",
+   "definition": "from recv() returning with the command to sendall() of the reply returning",
+   "event": "conn.send",
+   "field": "latency_ns",
+   "max": 0,
+   "measure": "request_wall_time",
+   "median": 0,
+   "min": 0,
+   "n": 1,
+   "p25": 0,
+   "p75": 0,
+   "resolution_note": "below one tick of the trace clock (1.5625e+07 ns): start and end fell in the same tick, so this is not a resolved duration (a 0 means under one tick, not zero)",
+   "resolution_ns": 15625000.0,
+   "seq": 15,
+   "unit": "ns",
+   "values": [
+    0
+   ]
+  },
+  "save_duration_ns": {
+   "build": "instrumented:kv-observability-jsonl",
+   "definition": "time to rewrite store.txt",
+   "event": "store.save_end",
+   "field": "duration_ns",
+   "max": 0,
+   "measure": "request_wall_time",
+   "median": 0,
+   "min": 0,
+   "n": 1,
+   "p25": 0,
+   "p75": 0,
+   "resolution_note": "below one tick of the trace clock (1.5625e+07 ns): start and end fell in the same tick, so this is not a resolved duration (a 0 means under one tick, not zero)",
+   "resolution_ns": 15625000.0,
+   "seq": 13,
+   "unit": "ns",
+   "values": [
+    0
+   ]
+  },
+  "store_bytes": 15
+ },
+ "generated_from": [
+  "raw/example-trace.jsonl",
+  "raw/matrix.json",
+  "raw/matrix/rep01-jsonl-c1.json",
+  "raw/matrix/rep01-jsonl-c16.json",
+  "raw/matrix/rep01-jsonl-c4.json",
+  "raw/matrix/rep01-off-c1.json",
+  "raw/matrix/rep01-off-c16.json",
+  "raw/matrix/rep01-off-c4.json",
+  "raw/matrix/rep01-original-c1.json",
+  "raw/matrix/rep01-original-c16.json",
+  "raw/matrix/rep01-original-c4.json",
+  "raw/matrix/rep01-ring-c1.json",
+  "raw/matrix/rep01-ring-c16.json",
+  "raw/matrix/rep01-ring-c4.json",
+  "raw/matrix/rep02-jsonl-c1.json",
+  "raw/matrix/rep02-jsonl-c16.json",
+  "raw/matrix/rep02-jsonl-c4.json",
+  "raw/matrix/rep02-off-c1.json",
+  "raw/matrix/rep02-off-c16.json",
+  "raw/matrix/rep02-off-c4.json",
+  "raw/matrix/rep02-original-c1.json",
+  "raw/matrix/rep02-original-c16.json",
+  "raw/matrix/rep02-original-c4.json",
+  "raw/matrix/rep02-ring-c1.json",
+  "raw/matrix/rep02-ring-c16.json",
+  "raw/matrix/rep02-ring-c4.json",
+  "raw/matrix/rep03-jsonl-c1.json",
+  "raw/matrix/rep03-jsonl-c16.json",
+  "raw/matrix/rep03-jsonl-c4.json",
+  "raw/matrix/rep03-off-c1.json",
+  "raw/matrix/rep03-off-c16.json",
+  "raw/matrix/rep03-off-c4.json",
+  "raw/matrix/rep03-original-c1.json",
+  "raw/matrix/rep03-original-c16.json",
+  "raw/matrix/rep03-original-c4.json",
+  "raw/matrix/rep03-ring-c1.json",
+  "raw/matrix/rep03-ring-c16.json",
+  "raw/matrix/rep03-ring-c4.json",
+  "raw/matrix/rep04-jsonl-c1.json",
+  "raw/matrix/rep04-jsonl-c16.json",
+  "raw/matrix/rep04-jsonl-c4.json",
+  "raw/matrix/rep04-off-c1.json",
+  "raw/matrix/rep04-off-c16.json",
+  "raw/matrix/rep04-off-c4.json",
+  "raw/matrix/rep04-original-c1.json",
+  "raw/matrix/rep04-original-c16.json",
+  "raw/matrix/rep04-original-c4.json",
+  "raw/matrix/rep04-ring-c1.json",
+  "raw/matrix/rep04-ring-c16.json",
+  "raw/matrix/rep04-ring-c4.json",
+  "raw/matrix/rep05-jsonl-c1.json",
+  "raw/matrix/rep05-jsonl-c16.json",
+  "raw/matrix/rep05-jsonl-c4.json",
+  "raw/matrix/rep05-off-c1.json",
+  "raw/matrix/rep05-off-c16.json",
+  "raw/matrix/rep05-off-c4.json",
+  "raw/matrix/rep05-original-c1.json",
+  "raw/matrix/rep05-original-c16.json",
+  "raw/matrix/rep05-original-c4.json",
+  "raw/matrix/rep05-ring-c1.json",
+  "raw/matrix/rep05-ring-c16.json",
+  "raw/matrix/rep05-ring-c4.json",
+  "raw/tests.txt"
+ ],
+ "matrix": {
+  "jsonl": {
+   "c1": {
+    "clients": 1,
+    "cmd_per_s": {
+     "build": "instrumented:kv-observability-jsonl",
+     "definition": "one run's measured commands / its wall time",
+     "max": 2911.208151360131,
+     "measure": "throughput",
+     "median": 2666.6666666666665,
+     "min": 2369.6682464121586,
+     "n": 5,
+     "p25": 2415.4589371729367,
+     "p75": 2666.6666666666665,
+     "unit": "cmd/s",
+     "values": [
+      2911.208151360131,
+      2415.4589371729367,
+      2666.6666666666665,
+      2369.6682464121586,
+      2666.6666666666665
+     ]
+    },
+    "commands_per_run": [
+     2000,
+     2000,
+     2000,
+     2000,
+     2000
+    ],
+    "p50_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 450.55,
+     "measure": "per_op_latency",
+     "median": 438.0,
+     "min": 351.45,
+     "n": 5,
+     "p25": 431.2,
+     "p75": 440.0,
+     "percentile": 50,
+     "pooled": 442.15,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      351.45,
+      431.2,
+      440.0,
+      450.55,
+      438.0
+     ]
+    },
+    "p95_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 780.11,
+     "measure": "per_op_latency",
+     "median": 692.61,
+     "min": 639.025,
+     "n": 5,
+     "p25": 691.325,
+     "p75": 761.755,
+     "percentile": 95,
+     "pooled": 717.01,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      639.025,
+      761.755,
+      692.61,
+      780.11,
+      691.325
+     ]
+    },
+    "p99_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 1470.605,
+     "measure": "per_op_latency",
+     "median": 851.108,
+     "min": 762.51,
+     "n": 5,
+     "p25": 841.449,
+     "p75": 978.77,
+     "percentile": 99,
+     "pooled": 967.613,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      762.51,
+      978.77,
+      851.108,
+      1470.605,
+      841.449
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-jsonl-c1.json",
+     "raw/matrix/rep02-jsonl-c1.json",
+     "raw/matrix/rep03-jsonl-c1.json",
+     "raw/matrix/rep04-jsonl-c1.json",
+     "raw/matrix/rep05-jsonl-c1.json"
+    ]
+   },
+   "c16": {
+    "clients": 16,
+    "cmd_per_s": {
+     "build": "instrumented:kv-observability-jsonl",
+     "definition": "one run's measured commands / its wall time",
+     "max": 2378.6516018716648,
+     "measure": "throughput",
+     "median": 2367.739548647201,
+     "min": 2322.0375879854564,
+     "n": 5,
+     "p25": 2367.739548647201,
+     "p75": 2375.825970745548,
+     "unit": "cmd/s",
+     "values": [
+      2322.0375879854564,
+      2375.825970745548,
+      2378.6516018716648,
+      2367.739548647201,
+      2367.739548647201
+     ]
+    },
+    "commands_per_run": [
+     32000,
+     32000,
+     32000,
+     32000,
+     32000
+    ],
+    "p50_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 6719.4,
+     "measure": "per_op_latency",
+     "median": 6621.2,
+     "min": 6595.7,
+     "n": 5,
+     "p25": 6604.35,
+     "p75": 6622.65,
+     "percentile": 50,
+     "pooled": 6630.0,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      6719.4,
+      6595.7,
+      6604.35,
+      6621.2,
+      6622.65
+     ]
+    },
+    "p95_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 9083.905,
+     "measure": "per_op_latency",
+     "median": 8523.125,
+     "min": 8352.805,
+     "n": 5,
+     "p25": 8506.6,
+     "p75": 8622.925,
+     "percentile": 95,
+     "pooled": 8610.9,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      9083.905,
+      8506.6,
+      8352.805,
+      8523.125,
+      8622.925
+     ]
+    },
+    "p99_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 10980.805,
+     "measure": "per_op_latency",
+     "median": 10151.634,
+     "min": 9776.517,
+     "n": 5,
+     "p25": 10130.519,
+     "p75": 10792.733,
+     "percentile": 99,
+     "pooled": 10466.305,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      10980.805,
+      10151.634,
+      9776.517,
+      10130.519,
+      10792.733
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-jsonl-c16.json",
+     "raw/matrix/rep02-jsonl-c16.json",
+     "raw/matrix/rep03-jsonl-c16.json",
+     "raw/matrix/rep04-jsonl-c16.json",
+     "raw/matrix/rep05-jsonl-c16.json"
+    ]
+   },
+   "c4": {
+    "clients": 4,
+    "cmd_per_s": {
+     "build": "instrumented:kv-observability-jsonl",
+     "definition": "one run's measured commands / its wall time",
+     "max": 2485.2438645450416,
+     "measure": "throughput",
+     "median": 2461.5384615384614,
+     "min": 2337.8141437615723,
+     "n": 5,
+     "p25": 2450.2297090465795,
+     "p75": 2485.2438645450416,
+     "unit": "cmd/s",
+     "values": [
+      2450.2297090465795,
+      2337.8141437615723,
+      2461.5384615384614,
+      2485.2438645450416,
+      2485.2438645450416
+     ]
+    },
+    "commands_per_run": [
+     8000,
+     8000,
+     8000,
+     8000,
+     8000
+    ],
+    "p50_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 1673.25,
+     "measure": "per_op_latency",
+     "median": 1591.1,
+     "min": 1573.7,
+     "n": 5,
+     "p25": 1577.65,
+     "p75": 1594.4,
+     "percentile": 50,
+     "pooled": 1601.5,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1594.4,
+      1673.25,
+      1591.1,
+      1573.7,
+      1577.65
+     ]
+    },
+    "p95_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 2835.215,
+     "measure": "per_op_latency",
+     "median": 2626.705,
+     "min": 2577.475,
+     "n": 5,
+     "p25": 2584.305,
+     "p75": 2632.345,
+     "percentile": 95,
+     "pooled": 2655.105,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      2626.705,
+      2835.215,
+      2632.345,
+      2577.475,
+      2584.305
+     ]
+    },
+    "p99_us": {
+     "build": "instrumented:kv-observability-jsonl",
+     "max": 3421.056,
+     "measure": "per_op_latency",
+     "median": 3167.469,
+     "min": 3119.402,
+     "n": 5,
+     "p25": 3149.371,
+     "p75": 3216.41,
+     "percentile": 99,
+     "pooled": 3223.32,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      3216.41,
+      3421.056,
+      3167.469,
+      3149.371,
+      3119.402
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-jsonl-c4.json",
+     "raw/matrix/rep02-jsonl-c4.json",
+     "raw/matrix/rep03-jsonl-c4.json",
+     "raw/matrix/rep04-jsonl-c4.json",
+     "raw/matrix/rep05-jsonl-c4.json"
+    ]
+   }
+  },
+  "off": {
+   "c1": {
+    "clients": 1,
+    "cmd_per_s": {
+     "build": "uninstrumented",
+     "definition": "one run's measured commands / its wall time",
+     "max": 5571.030640719107,
+     "measure": "throughput",
+     "median": 5333.333333333333,
+     "min": 4123.711340324964,
+     "n": 5,
+     "p25": 5128.2051280214355,
+     "p75": 5571.030640719107,
+     "unit": "cmd/s",
+     "values": [
+      5128.2051280214355,
+      4123.711340324964,
+      5571.030640719107,
+      5333.333333333333,
+      5571.030640719107
+     ]
+    },
+    "commands_per_run": [
+     2000,
+     2000,
+     2000,
+     2000,
+     2000
+    ],
+    "p50_us": {
+     "build": "uninstrumented",
+     "max": 238.9,
+     "measure": "per_op_latency",
+     "median": 233.85,
+     "min": 217.5,
+     "n": 5,
+     "p25": 217.75,
+     "p75": 235.0,
+     "percentile": 50,
+     "pooled": 237.5,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      238.9,
+      233.85,
+      217.75,
+      235.0,
+      217.5
+     ]
+    },
+    "p95_us": {
+     "build": "uninstrumented",
+     "max": 519.72,
+     "measure": "per_op_latency",
+     "median": 408.655,
+     "min": 354.125,
+     "n": 5,
+     "p25": 361.425,
+     "p75": 431.405,
+     "percentile": 95,
+     "pooled": 433.1,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      431.405,
+      519.72,
+      354.125,
+      408.655,
+      361.425
+     ]
+    },
+    "p99_us": {
+     "build": "uninstrumented",
+     "max": 611.53,
+     "measure": "per_op_latency",
+     "median": 531.505,
+     "min": 450.315,
+     "n": 5,
+     "p25": 484.614,
+     "p75": 532.069,
+     "percentile": 99,
+     "pooled": 558.912,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      531.505,
+      611.53,
+      450.315,
+      532.069,
+      484.614
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-off-c1.json",
+     "raw/matrix/rep02-off-c1.json",
+     "raw/matrix/rep03-off-c1.json",
+     "raw/matrix/rep04-off-c1.json",
+     "raw/matrix/rep05-off-c1.json"
+    ]
+   },
+   "c16": {
+    "clients": 16,
+    "cmd_per_s": {
+     "build": "uninstrumented",
+     "definition": "one run's measured commands / its wall time",
+     "max": 5901.881224618051,
+     "measure": "throughput",
+     "median": 4404.679972462281,
+     "min": 4330.175913388296,
+     "n": 5,
+     "p25": 4347.826086947582,
+     "p75": 4452.483651033276,
+     "unit": "cmd/s",
+     "values": [
+      5901.881224618051,
+      4452.483651033276,
+      4347.826086947582,
+      4404.679972462281,
+      4330.175913388296
+     ]
+    },
+    "commands_per_run": [
+     32000,
+     32000,
+     32000,
+     32000,
+     32000
+    ],
+    "p50_us": {
+     "build": "uninstrumented",
+     "max": 3570.45,
+     "measure": "per_op_latency",
+     "median": 3527.2,
+     "min": 2652.5,
+     "n": 5,
+     "p25": 3476.2,
+     "p75": 3543.0,
+     "percentile": 50,
+     "pooled": 3345.2,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      2652.5,
+      3476.2,
+      3543.0,
+      3570.45,
+      3527.2
+     ]
+    },
+    "p95_us": {
+     "build": "uninstrumented",
+     "max": 5414.005,
+     "measure": "per_op_latency",
+     "median": 5144.155,
+     "min": 3693.305,
+     "n": 5,
+     "p25": 4862.815,
+     "p75": 5327.9,
+     "percentile": 95,
+     "pooled": 5006.205,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      3693.305,
+      5144.155,
+      5414.005,
+      4862.815,
+      5327.9
+     ]
+    },
+    "p99_us": {
+     "build": "uninstrumented",
+     "max": 8101.632,
+     "measure": "per_op_latency",
+     "median": 7077.366,
+     "min": 4412.902,
+     "n": 5,
+     "p25": 5816.317,
+     "p75": 8032.358,
+     "percentile": 99,
+     "pooled": 6908.315,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      4412.902,
+      7077.366,
+      8101.632,
+      5816.317,
+      8032.358
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-off-c16.json",
+     "raw/matrix/rep02-off-c16.json",
+     "raw/matrix/rep03-off-c16.json",
+     "raw/matrix/rep04-off-c16.json",
+     "raw/matrix/rep05-off-c16.json"
+    ]
+   },
+   "c4": {
+    "clients": 4,
+    "cmd_per_s": {
+     "build": "uninstrumented",
+     "definition": "one run's measured commands / its wall time",
+     "max": 5818.181818181818,
+     "measure": "throughput",
+     "median": 4923.076923076923,
+     "min": 3908.158280426804,
+     "n": 5,
+     "p25": 4784.688995239963,
+     "p75": 5387.205387256066,
+     "unit": "cmd/s",
+     "values": [
+      5818.181818181818,
+      3908.158280426804,
+      4923.076923076923,
+      5387.205387256066,
+      4784.688995239963
+     ]
+    },
+    "commands_per_run": [
+     8000,
+     8000,
+     8000,
+     8000,
+     8000
+    ],
+    "p50_us": {
+     "build": "uninstrumented",
+     "max": 934.55,
+     "measure": "per_op_latency",
+     "median": 785.05,
+     "min": 630.55,
+     "n": 5,
+     "p25": 707.65,
+     "p75": 794.15,
+     "percentile": 50,
+     "pooled": 773.4,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      630.55,
+      934.55,
+      785.05,
+      707.65,
+      794.15
+     ]
+    },
+    "p95_us": {
+     "build": "uninstrumented",
+     "max": 1843.92,
+     "measure": "per_op_latency",
+     "median": 1364.215,
+     "min": 1164.305,
+     "n": 5,
+     "p25": 1260.9,
+     "p75": 1425.645,
+     "percentile": 95,
+     "pooled": 1448.51,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1164.305,
+      1843.92,
+      1364.215,
+      1260.9,
+      1425.645
+     ]
+    },
+    "p99_us": {
+     "build": "uninstrumented",
+     "max": 2674.507,
+     "measure": "per_op_latency",
+     "median": 1662.213,
+     "min": 1468.026,
+     "n": 5,
+     "p25": 1551.005,
+     "p75": 1731.44,
+     "percentile": 99,
+     "pooled": 1937.608,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1468.026,
+      2674.507,
+      1662.213,
+      1551.005,
+      1731.44
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-off-c4.json",
+     "raw/matrix/rep02-off-c4.json",
+     "raw/matrix/rep03-off-c4.json",
+     "raw/matrix/rep04-off-c4.json",
+     "raw/matrix/rep05-off-c4.json"
+    ]
+   }
+  },
+  "original": {
+   "c1": {
+    "clients": 1,
+    "cmd_per_s": {
+     "build": "uninstrumented",
+     "definition": "one run's measured commands / its wall time",
+     "max": 4926.108374528311,
+     "measure": "throughput",
+     "median": 4926.108374528311,
+     "min": 4739.336492987744,
+     "n": 5,
+     "p25": 4914.004913926202,
+     "p75": 4926.108374528311,
+     "unit": "cmd/s",
+     "values": [
+      4926.108374528311,
+      4914.004913926202,
+      4739.336492987744,
+      4926.108374528311,
+      4926.108374528311
+     ]
+    },
+    "commands_per_run": [
+     2000,
+     2000,
+     2000,
+     2000,
+     2000
+    ],
+    "p50_us": {
+     "build": "uninstrumented",
+     "max": 238.2,
+     "measure": "per_op_latency",
+     "median": 234.0,
+     "min": 225.6,
+     "n": 5,
+     "p25": 229.45,
+     "p75": 235.7,
+     "percentile": 50,
+     "pooled": 235.95,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      234.0,
+      235.7,
+      238.2,
+      229.45,
+      225.6
+     ]
+    },
+    "p95_us": {
+     "build": "uninstrumented",
+     "max": 435.57,
+     "measure": "per_op_latency",
+     "median": 406.13,
+     "min": 385.405,
+     "n": 5,
+     "p25": 395.04,
+     "p75": 420.8,
+     "percentile": 95,
+     "pooled": 408.11,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      385.405,
+      420.8,
+      435.57,
+      406.13,
+      395.04
+     ]
+    },
+    "p99_us": {
+     "build": "uninstrumented",
+     "max": 553.926,
+     "measure": "per_op_latency",
+     "median": 496.524,
+     "min": 475.431,
+     "n": 5,
+     "p25": 493.212,
+     "p75": 507.919,
+     "percentile": 99,
+     "pooled": 510.9,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      475.431,
+      507.919,
+      553.926,
+      493.212,
+      496.524
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-original-c1.json",
+     "raw/matrix/rep02-original-c1.json",
+     "raw/matrix/rep03-original-c1.json",
+     "raw/matrix/rep04-original-c1.json",
+     "raw/matrix/rep05-original-c1.json"
+    ]
+   },
+   "c16": {
+    "clients": 16,
+    "cmd_per_s": {
+     "build": "uninstrumented",
+     "definition": "one run's measured commands / its wall time",
+     "max": 5251.066622897546,
+     "measure": "throughput",
+     "median": 3792.8173521369786,
+     "min": 3696.8576709847384,
+     "n": 5,
+     "p25": 3710.144927536232,
+     "p75": 3820.89552238806,
+     "unit": "cmd/s",
+     "values": [
+      5251.066622897546,
+      3820.89552238806,
+      3710.144927536232,
+      3792.8173521369786,
+      3696.8576709847384
+     ]
+    },
+    "commands_per_run": [
+     32000,
+     32000,
+     32000,
+     32000,
+     32000
+    ],
+    "p50_us": {
+     "build": "uninstrumented",
+     "max": 3982.45,
+     "measure": "per_op_latency",
+     "median": 3686.6,
+     "min": 2972.75,
+     "n": 5,
+     "p25": 3661.15,
+     "p75": 3737.95,
+     "percentile": 50,
+     "pooled": 3572.5,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      2972.75,
+      3982.45,
+      3686.6,
+      3737.95,
+      3661.15
+     ]
+    },
+    "p95_us": {
+     "build": "uninstrumented",
+     "max": 9280.925,
+     "measure": "per_op_latency",
+     "median": 8318.625,
+     "min": 4306.3,
+     "n": 5,
+     "p25": 6244.92,
+     "p75": 9109.315,
+     "percentile": 95,
+     "pooled": 7785.43,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      4306.3,
+      6244.92,
+      9109.315,
+      8318.625,
+      9280.925
+     ]
+    },
+    "p99_us": {
+     "build": "uninstrumented",
+     "max": 11894.109,
+     "measure": "per_op_latency",
+     "median": 10663.01,
+     "min": 5280.659,
+     "n": 5,
+     "p25": 8475.733,
+     "p75": 11571.604,
+     "percentile": 99,
+     "pooled": 10844.51,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      5280.659,
+      8475.733,
+      11571.604,
+      10663.01,
+      11894.109
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-original-c16.json",
+     "raw/matrix/rep02-original-c16.json",
+     "raw/matrix/rep03-original-c16.json",
+     "raw/matrix/rep04-original-c16.json",
+     "raw/matrix/rep05-original-c16.json"
+    ]
+   },
+   "c4": {
+    "clients": 4,
+    "cmd_per_s": {
+     "build": "uninstrumented",
+     "definition": "one run's measured commands / its wall time",
+     "max": 5333.333333333333,
+     "measure": "throughput",
+     "median": 4412.575841160303,
+     "min": 4303.38891878108,
+     "n": 5,
+     "p25": 4412.575841160303,
+     "p75": 4571.428571428572,
+     "unit": "cmd/s",
+     "values": [
+      5333.333333333333,
+      4571.428571428572,
+      4303.38891878108,
+      4412.575841160303,
+      4412.575841160303
+     ]
+    },
+    "commands_per_run": [
+     8000,
+     8000,
+     8000,
+     8000,
+     8000
+    ],
+    "p50_us": {
+     "build": "uninstrumented",
+     "max": 866.85,
+     "measure": "per_op_latency",
+     "median": 857.2,
+     "min": 710.6,
+     "n": 5,
+     "p25": 844.8,
+     "p75": 863.65,
+     "percentile": 50,
+     "pooled": 834.5,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      710.6,
+      844.8,
+      857.2,
+      866.85,
+      863.65
+     ]
+    },
+    "p95_us": {
+     "build": "uninstrumented",
+     "max": 1679.78,
+     "measure": "per_op_latency",
+     "median": 1565.905,
+     "min": 1284.725,
+     "n": 5,
+     "p25": 1467.915,
+     "p75": 1581.125,
+     "percentile": 95,
+     "pooled": 1514.6,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1284.725,
+      1467.915,
+      1679.78,
+      1581.125,
+      1565.905
+     ]
+    },
+    "p99_us": {
+     "build": "uninstrumented",
+     "max": 2508.196,
+     "measure": "per_op_latency",
+     "median": 1885.637,
+     "min": 1526.502,
+     "n": 5,
+     "p25": 1768.432,
+     "p75": 1975.919,
+     "percentile": 99,
+     "pooled": 1952.709,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1526.502,
+      1768.432,
+      2508.196,
+      1975.919,
+      1885.637
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-original-c4.json",
+     "raw/matrix/rep02-original-c4.json",
+     "raw/matrix/rep03-original-c4.json",
+     "raw/matrix/rep04-original-c4.json",
+     "raw/matrix/rep05-original-c4.json"
+    ]
+   }
+  },
+  "ring": {
+   "c1": {
+    "clients": 1,
+    "cmd_per_s": {
+     "build": "instrumented:kv-observability-ring",
+     "definition": "one run's measured commands / its wall time",
+     "max": 4000.0,
+     "measure": "throughput",
+     "median": 3875.968992223577,
+     "min": 1939.8642095276766,
+     "n": 5,
+     "p25": 3460.207612405175,
+     "p75": 3875.9689924421923,
+     "unit": "cmd/s",
+     "values": [
+      3875.9689924421923,
+      4000.0,
+      1939.8642095276766,
+      3875.968992223577,
+      3460.207612405175
+     ]
+    },
+    "commands_per_run": [
+     2000,
+     2000,
+     2000,
+     2000,
+     2000
+    ],
+    "p50_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 385.85,
+     "measure": "per_op_latency",
+     "median": 306.5,
+     "min": 277.0,
+     "n": 5,
+     "p25": 299.35,
+     "p75": 357.5,
+     "percentile": 50,
+     "pooled": 363.95,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      306.5,
+      277.0,
+      385.85,
+      299.35,
+      357.5
+     ]
+    },
+    "p95_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 1329.83,
+     "measure": "per_op_latency",
+     "median": 502.66,
+     "min": 483.2,
+     "n": 5,
+     "p25": 485.7,
+     "p75": 577.055,
+     "percentile": 95,
+     "pooled": 772.37,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      502.66,
+      483.2,
+      1329.83,
+      485.7,
+      577.055
+     ]
+    },
+    "p99_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 1542.25,
+     "measure": "per_op_latency",
+     "median": 629.518,
+     "min": 566.307,
+     "n": 5,
+     "p25": 582.516,
+     "p75": 837.343,
+     "percentile": 99,
+     "pooled": 1332.602,
+     "samples": 10000,
+     "unit": "us",
+     "values": [
+      629.518,
+      582.516,
+      1542.25,
+      566.307,
+      837.343
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-ring-c1.json",
+     "raw/matrix/rep02-ring-c1.json",
+     "raw/matrix/rep03-ring-c1.json",
+     "raw/matrix/rep04-ring-c1.json",
+     "raw/matrix/rep05-ring-c1.json"
+    ]
+   },
+   "c16": {
+    "clients": 16,
+    "cmd_per_s": {
+     "build": "instrumented:kv-observability-ring",
+     "definition": "one run's measured commands / its wall time",
+     "max": 3500.7110819372706,
+     "measure": "throughput",
+     "median": 3308.5194375546425,
+     "min": 2595.717066837901,
+     "n": 5,
+     "p25": 3282.051282051282,
+     "p75": 3436.426116836512,
+     "unit": "cmd/s",
+     "values": [
+      3500.7110819372706,
+      2595.717066837901,
+      3436.426116836512,
+      3282.051282051282,
+      3308.5194375546425
+     ]
+    },
+    "commands_per_run": [
+     32000,
+     32000,
+     32000,
+     32000,
+     32000
+    ],
+    "p50_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 5907.55,
+     "measure": "per_op_latency",
+     "median": 4567.3,
+     "min": 4498.35,
+     "n": 5,
+     "p25": 4525.75,
+     "p75": 4705.15,
+     "percentile": 50,
+     "pooled": 4747.0,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      4498.35,
+      5907.55,
+      4567.3,
+      4525.75,
+      4705.15
+     ]
+    },
+    "p95_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 9274.215,
+     "measure": "per_op_latency",
+     "median": 6716.015,
+     "min": 6134.605,
+     "n": 5,
+     "p25": 6272.96,
+     "p75": 8015.15,
+     "percentile": 95,
+     "pooled": 7865.31,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      6272.96,
+      9274.215,
+      6134.605,
+      8015.15,
+      6716.015
+     ]
+    },
+    "p99_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 12539.152,
+     "measure": "per_op_latency",
+     "median": 8931.126,
+     "min": 7163.528,
+     "n": 5,
+     "p25": 7711.728,
+     "p75": 10578.414,
+     "percentile": 99,
+     "pooled": 10440.513,
+     "samples": 160000,
+     "unit": "us",
+     "values": [
+      7711.728,
+      10578.414,
+      7163.528,
+      12539.152,
+      8931.126
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-ring-c16.json",
+     "raw/matrix/rep02-ring-c16.json",
+     "raw/matrix/rep03-ring-c16.json",
+     "raw/matrix/rep04-ring-c16.json",
+     "raw/matrix/rep05-ring-c16.json"
+    ]
+   },
+   "c4": {
+    "clients": 4,
+    "cmd_per_s": {
+     "build": "instrumented:kv-observability-ring",
+     "definition": "one run's measured commands / its wall time",
+     "max": 4376.367614859026,
+     "measure": "throughput",
+     "median": 3656.3071298078517,
+     "min": 3368.4210526315787,
+     "n": 5,
+     "p25": 3507.2336694167348,
+     "p75": 4096.262160760221,
+     "unit": "cmd/s",
+     "values": [
+      4376.367614859026,
+      3507.2336694167348,
+      4096.262160760221,
+      3656.3071298078517,
+      3368.4210526315787
+     ]
+    },
+    "commands_per_run": [
+     8000,
+     8000,
+     8000,
+     8000,
+     8000
+    ],
+    "p50_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 1101.85,
+     "measure": "per_op_latency",
+     "median": 1049.8,
+     "min": 848.3,
+     "n": 5,
+     "p25": 955.2,
+     "p75": 1060.5,
+     "percentile": 50,
+     "pooled": 1014.15,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      848.3,
+      1060.5,
+      955.2,
+      1049.8,
+      1101.85
+     ]
+    },
+    "p95_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 2102.715,
+     "measure": "per_op_latency",
+     "median": 1787.315,
+     "min": 1506.91,
+     "n": 5,
+     "p25": 1642.905,
+     "p75": 1939.875,
+     "percentile": 95,
+     "pooled": 1828.105,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1506.91,
+      1939.875,
+      1642.905,
+      1787.315,
+      2102.715
+     ]
+    },
+    "p99_us": {
+     "build": "instrumented:kv-observability-ring",
+     "max": 2800.862,
+     "measure": "per_op_latency",
+     "median": 2172.42,
+     "min": 1779.302,
+     "n": 5,
+     "p25": 2013.21,
+     "p75": 2662.366,
+     "percentile": 99,
+     "pooled": 2370.904,
+     "samples": 40000,
+     "unit": "us",
+     "values": [
+      1779.302,
+      2662.366,
+      2013.21,
+      2172.42,
+      2800.862
+     ]
+    },
+    "raw": [
+     "raw/matrix/rep01-ring-c4.json",
+     "raw/matrix/rep02-ring-c4.json",
+     "raw/matrix/rep03-ring-c4.json",
+     "raw/matrix/rep04-ring-c4.json",
+     "raw/matrix/rep05-ring-c4.json"
+    ]
+   }
+  }
+ },
+ "policy": {
+  "invalid_runs_excluded": [],
+  "labels": "original and off are uninstrumented. ring (--inspect-port 0) is instrumented:kv-observability-ring and jsonl (--trace-jsonl, --inspect-port 0) is instrumented:kv-observability-jsonl; a figure from either must carry that label, and comparing it with off compares an instrumented build with an uninstrumented one",
+  "measures": "throughput: commands per second of one run (all clients' measured commands / wall time from the first client's start to the last client's end). per_op_latency: values are the per-run percentiles over every measured command of all clients (inclusive quantiles, as loadtest.py computes them); pooled is the same percentile over every command of the valid runs. derived_ratio: per-repeat cmd/s of a variant / cmd/s of off at the same client count",
+  "outliers": "no samples dropped; whole runs marked invalid on precondition failure",
+  "quantile_method": "inclusive",
+  "runs": 5,
+  "runs_by_harness": {
+   "matrix_clients": [
+    1,
+    4,
+    16
+   ],
+   "matrix_repeats": 5
+  },
+  "values": "run-level: one value per matrix run (one repeat of one variant at one client count, fresh server), in repeat order",
+  "warmup": "bench/loadtest.py: the key space is filled before measuring, then every client sends --warmup unmeasured commands before a barrier; every run starts a fresh server"
+ },
+ "project": "key-value-storage",
+ "schema": "bench-summary/1",
+ "source_sha": "448c88e1772dbb2c39d4dd0e2b0c03487cac4407",
+ "tests": {
+  "failed": 0,
+  "passed": 46,
+  "skipped": 8,
+  "total": 54
+ },
+ "tests_skipped": [
+  {
+   "reason": "uses SIGINT",
+   "test": "test_connections.GracefulShutdownTest.test_ctrl_c_with_a_connected_client"
+  },
+  {
+   "reason": "needs a FIFO",
+   "test": "test_inspection.BoundedBuffersTest.test_stalled_consumers_never_block_serving"
+  },
+  {
+   "reason": "uses SIGINT and a C locale",
+   "test": "test_persistence.StoreFileFormatTest.test_utf8_and_newlines_do_not_depend_on_the_locale"
+  },
+  {
+   "reason": "uses SIGINT and select() on pipes",
+   "test": "test_stdout.CliStdoutTest.test_both_modes_print_the_same_lines"
+  },
+  {
+   "reason": "uses SIGINT and select() on pipes",
+   "test": "test_stdout.CliStdoutTest.test_observability_off"
+  },
+  {
+   "reason": "uses SIGINT and select() on pipes",
+   "test": "test_stdout.CliStdoutTest.test_observability_on_keeps_stdout_identical"
+  },
+  {
+   "reason": "uses SIGINT",
+   "test": "test_stdout.NoOptionsTest.test_python_server_py_with_no_options"
+  },
+  {
+   "reason": "needs a non-root POSIX user for chmod",
+   "test": "test_tracing.LoadAndSaveEventsTest.test_failed_save_is_reported_while_the_reply_is_unchanged"
+  }
+ ]
+}
