@@ -1,0 +1,10 @@
+{
+ "name": "empty",
+ "steps": [
+  {"op": "send", "text": "PRINT"},
+  {"op": "send", "text": "GET a"},
+  {"op": "send", "text": "   "},
+  {"op": "reset"},
+  {"op": "send", "text": "PRINT"}
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "name": "restart",
+ "steps": [
+  {"op": "send", "text": "SET a 1"},
+  {"op": "send", "text": "SET b two"},
+  {"op": "restart"},
+  {"op": "send", "text": "GET a"},
+  {"op": "send", "text": "PRINT"},
+  {"op": "reset"},
+  {"op": "send", "text": "PRINT"},
+  {"op": "send", "text": "GET a"}
+ ]
+}

@@ -236,6 +236,46 @@ class CommandParser:
             return self.kv_store.print_store()
 
 
+# The per-message step of Server.handle_client, with no socket and no thread: one recv() payload in,
+# the reply out through send(). handle_client builds one Session per connection. The portfolio's browser
+# demo builds one with no client address and no observer, so it prints nothing and reports no connection.
+class Session:
+    def __init__(self, parser, client_address=None, observer=None):
+        self.parser = parser
+        self.client_address = client_address  # None: no peer, so nothing is printed about one.
+        self.observer = observer  # None: no connection hooks (they need a real connection).
+
+    def handle(self, data, send):
+        """One recv() payload. send(payload) delivers the reply. Returns False when the client asked to quit."""
+        obs = self.observer
+        client_address = self.client_address
+        if obs is not None:
+            obs.bytes_received(len(data))
+        message = data.decode().strip()
+        if obs is not None:
+            obs.decoded(message)
+        if client_address is not None:
+            print(f"Received from {client_address}: {message}")
+        if message.lower() == "quit":
+            if client_address is not None:
+                print(f"Client {client_address} requested to quit.")
+            if obs is not None:
+                obs.quit_requested()
+            return False
+
+        response = self.parser.parse_and_execute(message)
+        payload = response.encode()
+        if obs is not None:
+            obs.response_ready(len(payload))
+        send(payload)
+        if obs is not None:
+            obs.response_sent()
+
+        if client_address is not None:
+            print(f"Response sent to {client_address}: {response.strip()}")
+        return True
+
+
 # The Server class is responsible for setting up the TCP socket, accepting
 # incoming connections, and creating a new thread for each client.
 # Encapsulates the server’s networking functionality.
@@ -293,6 +333,7 @@ class Server:
         print(f"Connection from {client_address}")  # Prints the client’s address upon connection and disconnection.
         if obs is not None:
             obs.connection_opened(conn_id, client_address)
+        session = Session(self.parser, client_address, obs)
         with client_socket:
             while True:
                 receiving = True  # While waiting for data, an error during shutdown is not the client's fault.
@@ -307,28 +348,10 @@ class Server:
                             if obs is not None:
                                 obs.peer_disconnected()
                         break
-                    if obs is not None:
-                        obs.bytes_received(len(data))
-                    message = data.decode().strip()
-                    if obs is not None:
-                        obs.decoded(message)
-                    print(f"Received from {client_address}: {message}")
-                    if message.lower() == "quit":
-                        print(f"Client {client_address} requested to quit.")
-                        if obs is not None:
-                            obs.quit_requested()
-                        break  # Decodes the received bytes, strips extra whitespace, and checks for a “quit” command.
-
-                    response = self.parser.parse_and_execute(message)
-                    payload = response.encode()
-                    if obs is not None:
-                        obs.response_ready(len(payload))
-                    client_socket.sendall(payload)
-                    if obs is not None:
-                        obs.response_sent()
-                    # Passes the message to CommandParser and sends the resulting response back to the client.
-
-                    print(f"Response sent to {client_address}: {response.strip()}")
+                    # Session decodes the bytes, checks for a “quit” command, passes the message to
+                    # CommandParser and sends the resulting response back to the client.
+                    if not session.handle(data, client_socket.sendall):
+                        break
                 except Exception as e:
                     if receiving and self._closing and isinstance(e, OSError):
                         # On Windows, recv() raises instead of returning b"" once stop() closes the connection.
