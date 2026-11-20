@@ -1,0 +1,11 @@
+{"bytes": null, "client": "backlog-1", "mono_ns": 75396842072, "op": "connect", "text": ""}
+{"bytes": 7, "client": "backlog-1", "mono_ns": 75396858608, "op": "send", "text": "SET a 1"}
+{"bytes": 29, "client": "backlog-1", "mono_ns": 75398224918, "op": "recv", "text": "Added key 'a' with value '1'\n"}
+{"bytes": null, "client": "backlog-2", "mono_ns": 75398307247, "op": "connect", "text": ""}
+{"bytes": 5, "client": "backlog-2", "mono_ns": 75398316370, "op": "send", "text": "GET a"}
+{"bytes": 0, "client": "backlog-2", "mono_ns": 76398458621, "op": "recv", "text": "", "timed_out": true}
+{"bytes": 4, "client": "backlog-1", "mono_ns": 76398631444, "op": "send", "text": "quit"}
+{"bytes": null, "client": "backlog-1", "mono_ns": 76398690678, "op": "close", "text": ""}
+{"bytes": 1, "client": "backlog-2", "mono_ns": 76402213723, "op": "recv", "text": "1"}
+{"bytes": 4, "client": "backlog-2", "mono_ns": 76402262162, "op": "send", "text": "quit"}
+{"bytes": null, "client": "backlog-2", "mono_ns": 76402291756, "op": "close", "text": ""}

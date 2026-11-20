@@ -1,0 +1,41 @@
+{
+ "command": "python tests/parity/run_native.py --write",
+ "date": "2026-11-19",
+ "environment": "ubuntu-wsl2",
+ "excluded_keys": [
+  "duration_ns",
+  "hold_ns",
+  "hold_ns_max",
+  "hold_ns_mean",
+  "hold_ns_total",
+  "latency_ns",
+  "mono_ns",
+  "mtime_ns",
+  "owner_thread_id",
+  "pid",
+  "save_ns_max",
+  "save_ns_total",
+  "send_ns",
+  "thread_id",
+  "ts_ns",
+  "wait_ns",
+  "wait_ns_max",
+  "wait_ns_mean",
+  "wait_ns_total"
+ ],
+ "excluded_paths": [
+  "state.store.memory_bytes.value"
+ ],
+ "python": "3.11.18",
+ "schema": "kv-parity/1",
+ "scripts": {
+  "scripts/edges.json": "fc86307f9169022cd14f280aed75bdab3c8d3f5c1d0ae7cc7ab2b1836cd8881b",
+  "scripts/empty.json": "9a79f891573eed57529adc08a956779a98f5e4211b6213e1cd0a0f2a63d404d1",
+  "scripts/golden_session.json": "647587297c025d0e87a06c5ff95997ef9b68efc3d6b3eaa62e790f32ff26cb49",
+  "scripts/restart.json": "d4cb844196e0ca1224eed3eec67031e86eaf4f5fccbb5c508a113127dc268d0f"
+ },
+ "sources": {
+  "observability.py": "5a9176f8d519a9073cec08db728f5044c41b580d1896e30f23ef9f1b79eb397e",
+  "server.py": "005a74cdc7894ef11e4034a028c9707de57e403e7e2e808380b521e8bc4ed579"
+ }
+}

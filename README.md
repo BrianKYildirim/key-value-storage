@@ -706,6 +706,8 @@ The suite has <!-- claim:kv.tests.total.ubuntu-wsl2 -->54 tests and uses only th
 
 In the measured session on CPython 3.11.18, all <!-- claim:kv.tests.passed.ubuntu-wsl2 -->54 pass on Ubuntu under WSL2. On Windows, <!-- claim:kv.tests.passed.windows-native -->46 pass and <!-- claim:kv.tests.skipped.windows-native -->8 are skipped because they rely on POSIX features (signals, FIFOs, file permissions, the C locale). Both results are in `bench/results/2026-11-06-448c88e/<environment>/raw/tests.txt`.
 
+The portfolio's browser demo runs this same engine in the browser. It repeats a fixed set of command scripts and compares every reply, the stored file and every trace event with a native transcript. The scripts and transcripts are in `tests/parity/`; only `tests/parity/run_native.py` writes the transcripts, and its `--check` mode recompares them. `tests/parity/README.md` describes the step protocol and lists the fields that are masked because they differ between runtimes.
+
 ## Load testing
 
 `bench/loadtest.py` measures throughput and latency the way `client.py` talks to the server: one send and one <!-- claim:kv.design.client_recv_bytes -->1024-byte receive per command.
@@ -722,6 +724,14 @@ python bench/loadtest.py matrix --baseline-ref 7ccdff6 --repeat 5
 ```
 
 Results depend heavily on the machine and on what else it is doing. The script records the load average for each run. `--max-load` makes it wait for a quiet machine, and `--variants` runs only some variants. `bench/run_bench.py` runs the tests, this matrix and the example trace, and records the results as described under [What observability costs](#what-observability-costs).
+
+### Recordings
+
+`bench/record_scenarios.py` captures what a browser cannot host: lock contention between threads, a shutdown with open connections followed by a reload, `recv()` framing (an oversize send, a long `PRINT` reply, sends read together) and the connection limit with a client waiting in the backlog. Each scenario starts the real `server.py` with `--trace-jsonl` on `127.0.0.1`, drives real TCP clients the way `client.py` does, stops the server with SIGINT, and checks the recorded events for the behavior it exists to show. A scenario without its behavior writes nothing. It runs on Ubuntu under WSL2 only, and writes the attempt number, the source commit and the machine details next to the raw trace.
+
+```bash
+python bench/record_scenarios.py --env ubuntu-wsl2 --only contention,shutdown,framing,backlog --out <dir>
+```
 
 ## Project structure
 

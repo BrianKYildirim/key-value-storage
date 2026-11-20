@@ -1,0 +1,32 @@
+{
+ "name": "golden_session",
+ "steps": [
+  {"op": "send", "text": "PRINT"},
+  {"op": "send", "text": "GET a"},
+  {"op": "send", "text": "SET a 1"},
+  {"op": "send", "text": "set B two"},
+  {"op": "send", "text": "  GeT   a  "},
+  {"op": "send", "text": "SET a 2"},
+  {"op": "send", "text": "Set c\t3"},
+  {"op": "send", "text": "GET b"},
+  {"op": "send", "text": "PRINT"},
+  {"op": "send", "text": "SET a"},
+  {"op": "send", "text": "SET a b c"},
+  {"op": "send", "text": "GET"},
+  {"op": "send", "text": "GET a b"},
+  {"op": "send", "text": "REMOVE"},
+  {"op": "send", "text": "REMOVE zzz"},
+  {"op": "send", "text": "remove B"},
+  {"op": "send", "text": "FOO bar"},
+  {"op": "send", "text": "   "},
+  {"op": "send", "text": "\r\n"},
+  {"op": "send", "text": "quit now"},
+  {"op": "send", "text": "PRINT extra"},
+  {"op": "send", "text": "SET \u043a\u043b\u044e\u0447 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435"},
+  {"op": "send", "text": "SET d 4\n"},
+  {"op": "send", "text": "PRINT"},
+  {"op": "send", "text": "QUIT"},
+  {"op": "new_session"},
+  {"op": "send", "text": "PRINT"}
+ ]
+}

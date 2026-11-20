@@ -1,1 +1,5 @@
 bench/results/** text eol=lf
+# Parity scripts and goldens are compared byte for byte by sha256, so keep them LF on every platform.
+tests/parity/** text eol=lf
+# Recordings are hashed byte for byte by the portfolio, so keep them LF on every platform.
+bench/recordings/** text eol=lf

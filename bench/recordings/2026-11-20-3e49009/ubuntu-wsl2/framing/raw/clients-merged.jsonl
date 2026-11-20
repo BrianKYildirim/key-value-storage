@@ -1,0 +1,7 @@
+{"bytes": null, "client": "merged-1", "mono_ns": 72206962183, "op": "connect", "text": ""}
+{"bytes": 8, "client": "merged-1", "mono_ns": 72207007249, "op": "send", "text": "SET m1 1"}
+{"bytes": 8, "client": "merged-1", "mono_ns": 72207025137, "op": "send", "text": "SET m2 2"}
+{"bytes": 55, "client": "merged-1", "mono_ns": 72208594023, "op": "recv", "text": "ERROR: SET command requires 2 arguments: key and value\n"}
+{"bytes": 0, "client": "merged-1", "mono_ns": 72709451072, "op": "recv", "text": "", "timed_out": true}
+{"bytes": 4, "client": "merged-1", "mono_ns": 72709621800, "op": "send", "text": "quit"}
+{"bytes": null, "client": "merged-1", "mono_ns": 72709673724, "op": "close", "text": ""}

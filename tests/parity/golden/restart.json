@@ -1,0 +1,2870 @@
+{
+ "script": "restart",
+ "steps": [
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 1,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": false,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 0,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 4,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 4,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "bytes": null,
+      "duration_ns": null,
+      "error": null,
+      "error_type": null,
+      "exists": false,
+      "keys": 0,
+      "lines_skipped": null,
+      "ok": true,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 1,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.load",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 2,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 3,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 4,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "op": "boot",
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": false,
+     "last_save": null,
+     "mtime_ns": null,
+     "path": "store.txt",
+     "size_bytes": null,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [],
+     "entries_returned": 0,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 0,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 0
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": null
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 3,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": false,
+      "ok": true
+     },
+     "last_save": {
+      "bytes": 4,
+      "duration_ns": "<x:int>",
+      "generation": 1,
+      "mtime_ns": "<x:int>",
+      "ts_ns": "<x:int>"
+     },
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 1
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 1,
+     "keys": 1,
+     "synced_generation": 1
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 14,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 14,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "argc": 2,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "a",
+       "truncated": false
+      },
+      "reason": null,
+      "valid": true,
+      "value": {
+       "chars": 1,
+       "redacted": false,
+       "text": "1",
+       "truncated": false
+      },
+      "verb": "SET",
+      "verb_text": {
+       "chars": 3,
+       "redacted": false,
+       "text": "SET",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 5,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "cmd.parse",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 6,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 7,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "existed": false,
+      "generation": 1,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "a",
+       "truncated": false
+      },
+      "keys": 1,
+      "op": "set",
+      "value": {
+       "chars": 1,
+       "redacted": false,
+       "text": "1",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 8,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.mutation",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "generation": 1,
+      "keys": 1,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 9,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.save_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "bytes": 4,
+      "duration_ns": "<x:int>",
+      "error": null,
+      "error_type": null,
+      "generation": 1,
+      "mtime_ns": "<x:int>",
+      "ok": true,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 10,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.save_end",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 11,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 12,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 13,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 14,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "keep": true,
+   "op": "send",
+   "replies": [
+    "Added key 'a' with value '1'\n"
+   ],
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": true
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": true,
+     "last_save": {
+      "bytes": 4,
+      "duration_ns": "<x:int>",
+      "generation": 1,
+      "mtime_ns": "<x:int>",
+      "ts_ns": "<x:int>"
+     },
+     "mtime_ns": "<x:int>",
+     "path": "store.txt",
+     "size_bytes": 4,
+     "stat_error": null,
+     "synced_generation": 1
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "a",
+        "truncated": false
+       },
+       "value": {
+        "chars": 1,
+        "redacted": false,
+        "text": "1",
+        "truncated": false
+       }
+      }
+     ],
+     "entries_returned": 1,
+     "entries_truncated": false,
+     "generation": 1,
+     "keys": 1,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 2
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": "a\t1\n",
+   "text": "SET a 1"
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 5,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": false,
+      "ok": true
+     },
+     "last_save": {
+      "bytes": 10,
+      "duration_ns": "<x:int>",
+      "generation": 2,
+      "mtime_ns": "<x:int>",
+      "ts_ns": "<x:int>"
+     },
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 2
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 2,
+     "keys": 2,
+     "synced_generation": 2
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 24,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 24,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "argc": 2,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "b",
+       "truncated": false
+      },
+      "reason": null,
+      "valid": true,
+      "value": {
+       "chars": 3,
+       "redacted": false,
+       "text": "two",
+       "truncated": false
+      },
+      "verb": "SET",
+      "verb_text": {
+       "chars": 3,
+       "redacted": false,
+       "text": "SET",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 15,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "cmd.parse",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 16,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 17,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "existed": false,
+      "generation": 2,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "b",
+       "truncated": false
+      },
+      "keys": 2,
+      "op": "set",
+      "value": {
+       "chars": 3,
+       "redacted": false,
+       "text": "two",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 18,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.mutation",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "generation": 2,
+      "keys": 2,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 19,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.save_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "bytes": 10,
+      "duration_ns": "<x:int>",
+      "error": null,
+      "error_type": null,
+      "generation": 2,
+      "mtime_ns": "<x:int>",
+      "ok": true,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 20,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.save_end",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 21,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 22,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 23,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 24,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "keep": true,
+   "op": "send",
+   "replies": [
+    "Added key 'b' with value 'two'\n"
+   ],
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": true
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": true,
+     "last_save": {
+      "bytes": 10,
+      "duration_ns": "<x:int>",
+      "generation": 2,
+      "mtime_ns": "<x:int>",
+      "ts_ns": "<x:int>"
+     },
+     "mtime_ns": "<x:int>",
+     "path": "store.txt",
+     "size_bytes": 10,
+     "stat_error": null,
+     "synced_generation": 2
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "a",
+        "truncated": false
+       },
+       "value": {
+        "chars": 1,
+        "redacted": false,
+        "text": "1",
+        "truncated": false
+       }
+      },
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "b",
+        "truncated": false
+       },
+       "value": {
+        "chars": 3,
+        "redacted": false,
+        "text": "two",
+        "truncated": false
+       }
+      }
+     ],
+     "entries_returned": 2,
+     "entries_truncated": false,
+     "generation": 2,
+     "keys": 2,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 6
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": "a\t1\nb\ttwo\n",
+   "text": "SET b two"
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 2,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": true,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 2,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 7,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 7,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 1,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 2,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "bytes": 10,
+      "duration_ns": "<x:int>",
+      "error": null,
+      "error_type": null,
+      "exists": true,
+      "keys": 2,
+      "lines_skipped": 0,
+      "ok": true,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 3,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.load",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 4,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 5,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 6,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 7,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "op": "restart",
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": true,
+     "last_save": null,
+     "mtime_ns": "<x:int>",
+     "path": "store.txt",
+     "size_bytes": 10,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "a",
+        "truncated": false
+       },
+       "value": {
+        "chars": 1,
+        "redacted": false,
+        "text": "1",
+        "truncated": false
+       }
+      },
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "b",
+        "truncated": false
+       },
+       "value": {
+        "chars": 3,
+        "redacted": false,
+        "text": "two",
+        "truncated": false
+       }
+      }
+     ],
+     "entries_returned": 2,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 2,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 6
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": "a\t1\nb\ttwo\n"
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 4,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": true,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 2,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 15,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 15,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "argc": 1,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "a",
+       "truncated": false
+      },
+      "reason": null,
+      "valid": true,
+      "value": null,
+      "verb": "GET",
+      "verb_text": {
+       "chars": 3,
+       "redacted": false,
+       "text": "GET",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 8,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "cmd.parse",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 9,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 10,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "found": true,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "a",
+       "truncated": false
+      },
+      "keys": 2,
+      "op": "get"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 11,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.lookup",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 12,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 13,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 14,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 15,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "keep": true,
+   "op": "send",
+   "replies": [
+    "1"
+   ],
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": true,
+     "last_save": null,
+     "mtime_ns": "<x:int>",
+     "path": "store.txt",
+     "size_bytes": 10,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "a",
+        "truncated": false
+       },
+       "value": {
+        "chars": 1,
+        "redacted": false,
+        "text": "1",
+        "truncated": false
+       }
+      },
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "b",
+        "truncated": false
+       },
+       "value": {
+        "chars": 3,
+        "redacted": false,
+        "text": "two",
+        "truncated": false
+       }
+      }
+     ],
+     "entries_returned": 2,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 2,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 6
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": "a\t1\nb\ttwo\n",
+   "text": "GET a"
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 6,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": true,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 2,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 23,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 23,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "argc": 0,
+      "key": null,
+      "reason": null,
+      "valid": true,
+      "value": null,
+      "verb": "PRINT",
+      "verb_text": {
+       "chars": 5,
+       "redacted": false,
+       "text": "PRINT",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 16,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "cmd.parse",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 17,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 18,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "found": null,
+      "key": null,
+      "keys": 2,
+      "op": "print"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 19,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.lookup",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 20,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 21,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 22,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 23,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "keep": true,
+   "op": "send",
+   "replies": [
+    "[KEY]: a\t[VALUE]: 1\n[KEY]: b\t[VALUE]: two\n"
+   ],
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": true,
+     "last_save": null,
+     "mtime_ns": "<x:int>",
+     "path": "store.txt",
+     "size_bytes": 10,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "a",
+        "truncated": false
+       },
+       "value": {
+        "chars": 1,
+        "redacted": false,
+        "text": "1",
+        "truncated": false
+       }
+      },
+      {
+       "key": {
+        "chars": 1,
+        "redacted": false,
+        "text": "b",
+        "truncated": false
+       },
+       "value": {
+        "chars": 3,
+        "redacted": false,
+        "text": "two",
+        "truncated": false
+       }
+      }
+     ],
+     "entries_returned": 2,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 2,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 6
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": "a\t1\nb\ttwo\n",
+   "text": "PRINT"
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 1,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": false,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 0,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 4,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 4,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "bytes": null,
+      "duration_ns": null,
+      "error": null,
+      "error_type": null,
+      "exists": false,
+      "keys": 0,
+      "lines_skipped": null,
+      "ok": true,
+      "path": "store.txt"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 1,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.load",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 2,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 3,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 4,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "op": "reset",
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": false,
+     "last_save": null,
+     "mtime_ns": null,
+     "path": "store.txt",
+     "size_bytes": null,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [],
+     "entries_returned": 0,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 0,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 0
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": null
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 3,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": false,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 0,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 12,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 12,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "argc": 0,
+      "key": null,
+      "reason": null,
+      "valid": true,
+      "value": null,
+      "verb": "PRINT",
+      "verb_text": {
+       "chars": 5,
+       "redacted": false,
+       "text": "PRINT",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 5,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "cmd.parse",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 6,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 7,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "found": null,
+      "key": null,
+      "keys": 0,
+      "op": "print"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 8,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.lookup",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 9,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 10,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 11,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 12,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "keep": true,
+   "op": "send",
+   "replies": [
+    "Store is empty.\n"
+   ],
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": false,
+     "last_save": null,
+     "mtime_ns": null,
+     "path": "store.txt",
+     "size_bytes": null,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [],
+     "entries_returned": 0,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 0,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 0
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": null,
+   "text": "PRINT"
+  },
+  {
+   "diagnostics": {
+    "bytes": {
+     "received": 0,
+     "sent": 0
+    },
+    "commands": {},
+    "connections": {
+     "current": 0,
+     "total": 0
+    },
+    "derived": {
+     "commands_total": {
+      "from": "sum of all commands counts",
+      "value": 0
+     },
+     "lock_means": {
+      "from": "wait_ns_total / acquisitions and hold_ns_total / acquisitions (integer division)",
+      "value": {
+       "store": {
+        "hold_ns_mean": "<x:int>",
+        "wait_ns_mean": "<x:int>"
+       }
+      }
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - store.synced_generation",
+      "value": 0
+     },
+     "uptime_ns": {
+      "from": "taken.mono_ns - server.started_mono_ns",
+      "value": null
+     }
+    },
+    "errors": {},
+    "locks": {
+     "store": {
+      "acquisitions": 5,
+      "contended": 0,
+      "failed": 0,
+      "hold_ns_max": "<x:int>",
+      "hold_ns_total": "<x:int>",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "reentrant": 0,
+      "wait_ns_max": "<x:int>",
+      "wait_ns_total": "<x:int>",
+      "waiting_now": 0
+     }
+    },
+    "persistence": {
+     "last_load": {
+      "exists": false,
+      "ok": true
+     },
+     "last_save": null,
+     "save_ns_max": "<x:int>",
+     "save_ns_total": "<x:int>",
+     "saves_failed": 0,
+     "saves_ok": 0
+    },
+    "server": {
+     "bound_port": null,
+     "host": "0.0.0.0",
+     "max_connections": 100,
+     "pid": "<x:int>",
+     "port": 3490,
+     "running": false,
+     "started_mono_ns": null,
+     "started_ts_ns": null,
+     "store_path": "store.txt"
+    },
+    "store": {
+     "generation": 0,
+     "keys": 0,
+     "synced_generation": 0
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "threads": {
+     "live_handlers": 0,
+     "process_total": 1
+    },
+    "trace": {
+     "dropped": 0,
+     "emitted": 20,
+     "internal_errors": 0,
+     "listener_errors": 0,
+     "max_chars": 256,
+     "ring_capacity": 4096,
+     "ring_evicted": 0,
+     "ring_size": 20,
+     "subscribers": 0,
+     "values_redacted": false
+    },
+    "v": 1
+   },
+   "events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "argc": 1,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "a",
+       "truncated": false
+      },
+      "reason": null,
+      "valid": true,
+      "value": null,
+      "verb": "GET",
+      "verb_text": {
+       "chars": 3,
+       "redacted": false,
+       "text": "GET",
+       "truncated": false
+      }
+     },
+     "mono_ns": "<x:int>",
+     "seq": 13,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "cmd.parse",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 14,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 15,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "found": false,
+      "key": {
+       "chars": 1,
+       "redacted": false,
+       "text": "a",
+       "truncated": false
+      },
+      "keys": 0,
+      "op": "get"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 16,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "store.lookup",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 17,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "inspect_events": [
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "lock": "store",
+      "owner_thread": null,
+      "owner_thread_id": null,
+      "waiting": 1
+     },
+     "mono_ns": "<x:int>",
+     "seq": 18,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.wait_start",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "contended": false,
+      "lock": "store",
+      "wait_ns": "<x:int>",
+      "waiting": 0
+     },
+     "mono_ns": "<x:int>",
+     "seq": 19,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.acquired",
+     "v": 1
+    },
+    {
+     "cmd": null,
+     "conn": null,
+     "data": {
+      "hold_ns": "<x:int>",
+      "lock": "store"
+     },
+     "mono_ns": "<x:int>",
+     "seq": 20,
+     "thread": "MainThread",
+     "thread_id": "<x:int>",
+     "ts_ns": "<x:int>",
+     "type": "lock.released",
+     "v": 1
+    }
+   ],
+   "keep": true,
+   "op": "send",
+   "replies": [
+    "Key 'a' not found."
+   ],
+   "state": {
+    "derived": {
+     "file_matches_last_save_stat": {
+      "from": "file size_bytes and mtime_ns equal those recorded right after the last successful save (false means the file changed since, e.g. a failed save or an external edit)",
+      "value": null
+     },
+     "file_reflects_latest_change": {
+      "from": "file.synced_generation == store.generation (null when unknown)",
+      "value": true
+     },
+     "unsaved_mutations": {
+      "from": "store.generation - file.synced_generation",
+      "value": 0
+     }
+    },
+    "file": {
+     "exists": false,
+     "last_save": null,
+     "mtime_ns": null,
+     "path": "store.txt",
+     "size_bytes": null,
+     "stat_error": null,
+     "synced_generation": 0
+    },
+    "redaction": {
+     "max_chars": 256,
+     "values_redacted": false
+    },
+    "store": {
+     "entries": [],
+     "entries_returned": 0,
+     "entries_truncated": false,
+     "generation": 0,
+     "keys": 0,
+     "memory_bytes": {
+      "kind": "estimate",
+      "method": "sys.getsizeof(dict) plus sys.getsizeof of each key and value; shallow, ignores allocator overhead and objects shared with other code",
+      "unit": "bytes",
+      "value": "<x:int>"
+     },
+     "payload_bytes": {
+      "kind": "exact",
+      "method": "sum of UTF-8 encoded lengths of all keys and values",
+      "unit": "bytes",
+      "value": 0
+     }
+    },
+    "taken": {
+     "mono_ns": "<x:int>",
+     "ts_ns": "<x:int>"
+    },
+    "v": 1
+   },
+   "stdout": [],
+   "store_txt": null,
+   "text": "GET a"
+  }
+ ]
+}
