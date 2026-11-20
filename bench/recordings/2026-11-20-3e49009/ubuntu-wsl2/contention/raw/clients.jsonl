@@ -1,0 +1,212 @@
+{"bytes": null, "client": "client-0", "mono_ns": 64967442149, "op": "connect", "text": ""}
+{"bytes": null, "client": "client-1", "mono_ns": 64967670277, "op": "connect", "text": ""}
+{"bytes": null, "client": "client-3", "mono_ns": 64967812380, "op": "connect", "text": ""}
+{"bytes": null, "client": "client-2", "mono_ns": 64967871293, "op": "connect", "text": ""}
+{"bytes": 13, "client": "client-2", "mono_ns": 64968237639, "op": "send", "text": "SET counter 2"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64968252277, "op": "send", "text": "SET counter 0"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64968294848, "op": "send", "text": "SET counter 3"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64968399392, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64969062396, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64969078799, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64970390730, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64970408534, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64971584148, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64971605341, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64972245873, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64972269421, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64973079397, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64973096603, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64973398864, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64973418314, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64974009912, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64974047952, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64974540972, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64974555278, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64975038690, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64975051795, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64975495823, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64975512389, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64975992417, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64976024305, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64976416387, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64976430219, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64976928032, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64976941720, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64977431110, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64977443529, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64978061221, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64978079599, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64978590839, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64978610053, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64979055632, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64979069838, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64979479754, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64979493182, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64979943916, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64979958774, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64980411334, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64980424718, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64980846490, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64980858210, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64981226808, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64981243840, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64981670482, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64981683999, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64982038474, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64982050746, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64982456346, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64982470440, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64982928462, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64982942530, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64983360650, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64983374279, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64983933560, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64983947225, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64984405855, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64984420839, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64984785450, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64984798364, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64985245286, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64985259179, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64985663719, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64985676647, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64986020184, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64986033159, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64986482704, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64986498996, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64986989965, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64987003690, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64987452151, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64987469934, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64988017702, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64988033782, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64988487980, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64988503181, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64988950530, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64988980914, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64989247042, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64989260336, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64989712109, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64989724894, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64990211965, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64990224036, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64990677967, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64990691995, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64991106725, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64991119269, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64991623649, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64991635952, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64992063310, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64992076491, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64992545525, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64992559182, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64992993224, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64993004971, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64993466392, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64993478474, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64993879711, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64993892699, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64994306865, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64994321114, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64995584298, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64995599492, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64996040206, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64996053485, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64996330877, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64996343492, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64996865855, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64996879631, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64997325373, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64997338075, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64997622507, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64997636334, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64998189430, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64998201021, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 64998650161, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 64998664037, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 64999022985, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 64999034848, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 64999372118, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 64999385288, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 64999757052, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 64999769861, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65000219293, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65000234045, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65000659657, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65000672192, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65001128866, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65001158493, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65001530471, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65001543742, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65001963049, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65001974515, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65002424470, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65002438684, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65003045673, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65003059934, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65003498243, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65003512704, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65003945940, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65003958518, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65004457955, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65004473610, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65004942006, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65004954920, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65005380433, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65005395098, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65005772477, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65005788938, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65006216254, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65006228629, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65006641448, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65006672166, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65007071817, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65007084853, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65007527944, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65007540316, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65007957784, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65007970446, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65008454512, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65008468753, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65008892646, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65008906231, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65009359939, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65009374478, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65009814233, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65009827425, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65010234245, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65010247680, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65010699906, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65010711242, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65011181685, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65011195593, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65011558589, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65011571852, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65011975682, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65011988123, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65012440537, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65012453974, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65012853418, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 13, "client": "client-0", "mono_ns": 65012865181, "op": "send", "text": "SET counter 0"}
+{"bytes": 35, "client": "client-3", "mono_ns": 65013326933, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65013339883, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65013801156, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65013815777, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65014139888, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 13, "client": "client-1", "mono_ns": 65014153156, "op": "send", "text": "SET counter 1"}
+{"bytes": 35, "client": "client-0", "mono_ns": 65014576582, "op": "recv", "text": "Added key 'counter' with value '0'\n"}
+{"bytes": 4, "client": "client-0", "mono_ns": 65014591007, "op": "send", "text": "quit"}
+{"bytes": null, "client": "client-0", "mono_ns": 65014614402, "op": "close", "text": ""}
+{"bytes": 35, "client": "client-3", "mono_ns": 65015111538, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 13, "client": "client-3", "mono_ns": 65015124990, "op": "send", "text": "SET counter 3"}
+{"bytes": 35, "client": "client-2", "mono_ns": 65015609028, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 13, "client": "client-2", "mono_ns": 65015623439, "op": "send", "text": "SET counter 2"}
+{"bytes": 35, "client": "client-1", "mono_ns": 65016031072, "op": "recv", "text": "Added key 'counter' with value '1'\n"}
+{"bytes": 4, "client": "client-1", "mono_ns": 65016048371, "op": "send", "text": "quit"}
+{"bytes": null, "client": "client-1", "mono_ns": 65016064313, "op": "close", "text": ""}
+{"bytes": 35, "client": "client-3", "mono_ns": 65016620103, "op": "recv", "text": "Added key 'counter' with value '3'\n"}
+{"bytes": 4, "client": "client-3", "mono_ns": 65016632983, "op": "send", "text": "quit"}
+{"bytes": null, "client": "client-3", "mono_ns": 65016644041, "op": "close", "text": ""}
+{"bytes": 35, "client": "client-2", "mono_ns": 65017136270, "op": "recv", "text": "Added key 'counter' with value '2'\n"}
+{"bytes": 4, "client": "client-2", "mono_ns": 65017147859, "op": "send", "text": "quit"}
+{"bytes": null, "client": "client-2", "mono_ns": 65017157557, "op": "close", "text": ""}
